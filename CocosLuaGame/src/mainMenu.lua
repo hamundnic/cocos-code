@@ -163,7 +163,7 @@ function CreateTestMenu()
     
     local targetPlatform = cc.Application:getInstance():getTargetPlatform()       
     if (cc.PLATFORM_OS_IPHONE == targetPlatform) or (cc.PLATFORM_OS_IPAD == targetPlatform) then
-        CloseMenu:setVisible(false)
+        CloseMenu:setVisible(true)
     end
 
     -- add menu items for tests
