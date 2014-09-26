@@ -43,15 +43,6 @@ local function main()
     cc.FileUtils:getInstance():addSearchPath("src")
     cc.FileUtils:getInstance():addSearchPath("res")
     cc.Director:getInstance():getOpenGLView():setDesignResolutionSize(designSize.width, designSize.height, cc.ResolutionPolicy.FIXED_HEIGHT)
-    
-    --create scene 
---    local scene = require("mainMenu")
---    local gameScene = scene.create()
---    if cc.Director:getInstance():getRunningScene() then
---        cc.Director:getInstance():replaceScene(gameScene)
---    else
---        cc.Director:getInstance():runWithScene(gameScene)
---    end
 
     require "src/mainMenu"
     local scene = cc.Scene:create()
