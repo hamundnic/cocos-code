@@ -9,9 +9,9 @@ require "src/helper"
 require "src/testResource"
 require "src/VisibleRect"
 --
---require "src/AccelerometerTest/AccelerometerTest"
---require "src/ActionManagerTest/ActionManagerTest"
---require "src/ActionsEaseTest/ActionsEaseTest"
+require "src/AccelerometerTest/AccelerometerTest"
+require "src/ActionManagerTest/ActionManagerTest"
+require "src/ActionsEaseTest/ActionsEaseTest"
 --require "src/ActionsProgressTest/ActionsProgressTest"
 --require "src/ActionsTest/ActionsTest"
 --require "src/AssetsManagerTest/AssetsManagerTest"
@@ -28,7 +28,7 @@ require "src/VisibleRect"
 --require "src/FontTest/FontTest"
 --require "src/IntervalTest/IntervalTest"
 --require "src/KeypadTest/KeypadTest"
---require "src/LabelTest/LabelTest"
+require "src/LabelTest/LabelTest"
 --require "src/LabelTestNew/LabelTestNew"
 require "src/LayerTest/LayerTest"
 --require "src/MenuTest/MenuTest"
@@ -42,7 +42,7 @@ require "src/LayerTest/LayerTest"
 --require "src/RenderTextureTest/RenderTextureTest"
 --require "src/RotateWorldTest/RotateWorldTest"
 --require "src/Sprite3DTest/Sprite3DTest"
---require "src/SpriteTest/SpriteTest"
+require "src/SpriteTest/SpriteTest"
 --require "src/SceneTest/SceneTest"
 --require "src/SpineTest/SpineTest"
 --require "src/Texture2dTest/Texture2dTest"
@@ -67,9 +67,9 @@ local BeginPos = {x = 0, y = 0}
 
 
 local _allTests = {
---    { isSupported = true,  name = "Accelerometer"          , create_func=             AccelerometerMain  },
---    { isSupported = true,  name = "ActionManagerTest"      , create_func   =         ActionManagerTestMain  },
---    { isSupported = true,  name = "ActionsEaseTest"        , create_func   =           EaseActionsTest      },
+    { isSupported = true,  name = "Accelerometer"          , create_func=             AccelerometerMain  },
+    { isSupported = true,  name = "ActionManagerTest"      , create_func   =         ActionManagerTestMain  },
+    { isSupported = true,  name = "ActionsEaseTest"        , create_func   =           EaseActionsTest      },
 --    { isSupported = true,  name = "ActionsProgressTest"    , create_func   =       ProgressActionsTest      },
 --    { isSupported = true,  name = "ActionsTest"            , create_func   =               ActionsTest      },
 --    { isSupported = true,  name = "AssetsManagerTest"      , create_func   =         AssetsManagerTestMain      },
@@ -92,7 +92,7 @@ local _allTests = {
 --    { isSupported = true,  name = "FontTest"               , create_func   =              FontTestMain      },
 --    { isSupported = true,  name = "IntervalTest"           , create_func   =              IntervalTestMain  },
 --    { isSupported = true,  name = "KeypadTest"             , create_func=                KeypadTestMain  }, 
---    { isSupported = true,  name = "LabelTest"              , create_func   =                 LabelTest      },
+    { isSupported = true,  name = "LabelTest"              , create_func   =                 LabelTest      },
 --    { isSupported = true,  name = "LabelTestNew"           , create_func   =                 LabelTestNew      },
     { isSupported = true,  name = "LayerTest"              , create_func   =                 LayerTestMain  },
 --    { isSupported = true,  name = "LuaBridgeTest"          , create_func   =        LuaBridgeMainTest },
@@ -113,7 +113,7 @@ local _allTests = {
 --    { isSupported = false,  name = "SchdulerTest"           , create_func=              SchdulerTestMain  },
 --    { isSupported = false,  name = "ShaderTest"             , create_func=            ShaderTestMain      },
 --    { isSupported = true,  name = "Sprite3DTest"           , create_func   =                Sprite3DTest    },
---    { isSupported = true,  name = "SpriteTest"             , create_func   =                SpriteTest      },
+    { isSupported = true,  name = "SpriteTest"             , create_func   =                SpriteTest      },
 --    { isSupported = false,  name = "TextInputTest"          , create_func=             TextInputTestMain  },
 --    { isSupported = true,  name = "Texture2DTest"          , create_func   =             Texture2dTestMain  },
 --    { isSupported = false,  name = "TextureCacheTest"       , create_func=      TextureCacheTestMain      },
