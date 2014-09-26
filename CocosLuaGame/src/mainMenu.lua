@@ -58,6 +58,7 @@ require "src/LayerTest/LayerTest"
 --require "src/VideoPlayerTest/VideoPlayerTest"
 --require "src/FastTiledMapTest/FastTiledMapTest"
 
+require "src/DemoTest/DemoTest"
 
 local LINE_SPACE = 40
 
@@ -93,7 +94,7 @@ local _allTests = {
 --    { isSupported = true,  name = "KeypadTest"             , create_func=                KeypadTestMain  }, 
 --    { isSupported = true,  name = "LabelTest"              , create_func   =                 LabelTest      },
 --    { isSupported = true,  name = "LabelTestNew"           , create_func   =                 LabelTestNew      },
-    { isSupported = true,  name = "LayerTest"              , create_func   =                 LayerTestMain  }
+    { isSupported = true,  name = "LayerTest"              , create_func   =                 LayerTestMain  },
 --    { isSupported = true,  name = "LuaBridgeTest"          , create_func   =        LuaBridgeMainTest },
 --    { isSupported = true,  name = "MenuTest"               , create_func   =                  MenuTestMain  }, 
 --    { isSupported = true,  name = "MotionStreakTest"       , create_func   =          MotionStreakTest      },
@@ -123,6 +124,9 @@ local _allTests = {
 --    { isSupported = true,  name = "VideoPlayerTest"        , create_func=           VideoPlayerTestMain  },
 --    { isSupported = true,  name = "XMLHttpRequestTest"     , create_func   =        XMLHttpRequestTestMain  },
 --    { isSupported = true,  name = "ZwoptexTest"            , create_func   =               ZwoptexTestMain  }
+    
+    { isSupported = true,  name = "DemoTest"            , create_func   =               DemoTestMain  }
+
 }
 
 local TESTS_COUNT = table.getn(_allTests)
