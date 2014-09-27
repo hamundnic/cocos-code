@@ -40,9 +40,51 @@ local function main()
         cc.Director:getInstance():setContentScaleFactor(resourceSize.height/designSize.height)
     end
     
-    cc.FileUtils:getInstance():addSearchPath("src")
-    cc.FileUtils:getInstance():addSearchPath("res")
+--    cc.FileUtils:getInstance():addSearchPath("src")
+--    cc.FileUtils:getInstance():addSearchPath("res")
     cc.Director:getInstance():getOpenGLView():setDesignResolutionSize(designSize.width, designSize.height, cc.ResolutionPolicy.FIXED_HEIGHT)
+    
+    local fileUtils = cc.FileUtils:getInstance()
+    local function addSearchPath(resPrefix, height)
+        local searchPaths = fileUtils:getSearchPaths()
+        table.insert(searchPaths, 1, resPrefix)
+        table.insert(searchPaths, 1, resPrefix .. "cocosbuilderRes")
+
+        if screenSize.height > 320 then
+            table.insert(searchPaths, 1, resPrefix .. "hd")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/hd")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/hd/Images")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/hd/scenetest/ArmatureComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/hd/scenetest/AttributeComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/hd/scenetest/BackgroundComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/hd/scenetest/EffectComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/hd/scenetest/LoadSceneEdtiorFileTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/hd/scenetest/ParticleComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/hd/scenetest/SpriteComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/hd/scenetest/TmxMapComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/hd/scenetest/UIComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/hd/scenetest/TriggerTest")
+        else
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/Images")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/scenetest/ArmatureComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/scenetest/AttributeComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/scenetest/BackgroundComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/scenetest/EffectComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/scenetest/LoadSceneEdtiorFileTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/scenetest/ParticleComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/scenetest/SpriteComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/scenetest/TmxMapComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/scenetest/UIComponentTest")
+            table.insert(searchPaths, 1, resPrefix .. "ccs-res/scenetest/TriggerTest")
+        end
+
+        fileUtils:setSearchPaths(searchPaths)
+
+    end
+
+    addSearchPath("res/", screenSize.height)
+    addSearchPath("", screenSize.height)
     
     
     require "src/mainMenu"
