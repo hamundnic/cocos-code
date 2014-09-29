@@ -37,8 +37,10 @@ end
 
 function Demo1Scene:createLayerFarm()
     local layerFarm = cc.Layer:create()
-    local spriteDog = self:creatDog()
-    layerFarm:addChild(spriteDog)
+--    local spriteDog = self:creatDog()
+    local stoneSprite = cc.Sprite:create("Images/stone.png")
+    stoneSprite:setPosition(self.origin.x + self.visibleSize.width * 0.5, self.origin.y + self.visibleSize.height * 0.5)
+    layerFarm:addChild(stoneSprite)
 
     local function onNodeEvent(event)
         if "exit" == event then
