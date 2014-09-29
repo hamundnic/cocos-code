@@ -67,8 +67,9 @@ end
 function GameScene:createLayerFarm()
     local layerFarm = cc.Layer:create()
     -- add in farm background
-    local bg = cc.Sprite:create("farm.jpg")
-    bg:setPosition(self.origin.x + self.visibleSize.width / 2 + 80, self.origin.y + self.visibleSize.height / 2)
+--    local bg = cc.Sprite:create("farm.jpg")
+    local bg = cc.Sprite:create("background3.png")
+    bg:setPosition(self.origin.x + self.visibleSize.width / 2, self.origin.y + self.visibleSize.height / 2)
     layerFarm:addChild(bg)
 
     -- add land sprite
