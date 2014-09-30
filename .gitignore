@@ -33,6 +33,22 @@ GDCQ/runtime
 GDCQ/frameworks/cocos2d-x/build/build
 GDCQ/frameworks/cocos2d-x/cocos/scripting/lua-bindings/proj.ios_mac/build
 GDCQ/frameworks/runtime-src/proj.ios_mac/build
+gdgame/publish
+gdgame/frameworks/runtime-src/proj.android/assets
+gdgame/frameworks/runtime-src/proj.android/bin
+gdgame/frameworks/runtime-src/proj.android/gen
+gdgame/frameworks/runtime-src/proj.android/libs
+gdgame/frameworks/runtime-src/proj.android/lint.xml
+gdgame/frameworks/runtime-src/proj.android/local.properties
+gdgame/frameworks/runtime-src/proj.android/obj
+gdgame/frameworks/cocos2d-x/cocos/platform/android/java/bin
+gdgame/frameworks/cocos2d-x/cocos/platform/android/java/gen
+gdgame/frameworks/cocos2d-x/cocos/platform/android/java/local.properties
+gdgame/frameworks/runtime-src/proj.ios_mac/gdgame.xcodeproj/project.xcworkspace
+gdgame/runtime
+gdgame/frameworks/cocos2d-x/build/build
+gdgame/frameworks/cocos2d-x/cocos/scripting/lua-bindings/proj.ios_mac/build
+gdgame/frameworks/runtime-src/proj.ios_mac/build
 samsung-gt_n7100-4df192d45b3c9f95.json
 htc-htc_desire-SH146PL06771.json
 
