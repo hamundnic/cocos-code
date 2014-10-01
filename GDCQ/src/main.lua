@@ -20,8 +20,7 @@ local function main()
     -- avoid memory leak
     collectgarbage("setpause", 100)
     collectgarbage("setstepmul", 5000)
-    
-    ----------------
+
     -- run
     local director = cc.Director:getInstance()
     local glView   = director:getOpenGLView()
@@ -34,29 +33,21 @@ local function main()
     director:setDisplayStats(true)
     director:setAnimationInterval(1.0 / 60)
     local screenSize = glView:getFrameSize()
-    local designSize = {width = 480, height = 320}
-    if screenSize.height > 320 then
-        local resourceSize = {width = 960, height = 640}
-        cc.Director:getInstance():setContentScaleFactor(resourceSize.height/designSize.height)
-    end
-    cc.Director:getInstance():getOpenGLView():setDesignResolutionSize(designSize.width, designSize.height, cc.ResolutionPolicy.FIXED_HEIGHT)
-    
-    local fileUtils = cc.FileUtils:getInstance()
-    local function addSearchPath(resPrefix, height)
-        local searchPaths = fileUtils:getSearchPaths()
-        table.insert(searchPaths, 1, resPrefix)
-        table.insert(searchPaths, 1, resPrefix .. "cocosbuilderRes")
-        fileUtils:setSearchPaths(searchPaths)
-    end
-    
+    local designSize = {width = 960, height = 960}
+    local resourceSize = {width = 960, height = 640}
+    --    cc.Director:getInstance():setContentScaleFactor(resourceSize.height/designSize.height)
+    cc.Director:getInstance():getOpenGLView():setDesignResolutionSize(designSize.width, designSize.height, cc.ResolutionPolicy.NO_BORDER)
+
     cc.FileUtils:getInstance():addSearchPath("src")
     cc.FileUtils:getInstance():addSearchPath("res")
-    
+    cc.FileUtils:getInstance():addSearchPath("res/UI/alpha/VGA")
+    cc.FileUtils:getInstance():addSearchPath("res/sound") 
+
     --create scene 
     local scene = require("GameScene")
     local gameScene = scene.create()
-    gameScene:playBgMusic()
-    
+    --    gameScene:playBgMusic()
+
     if cc.Director:getInstance():getRunningScene() then
         cc.Director:getInstance():replaceScene(gameScene)
     else
