@@ -30,13 +30,11 @@ end
 function GameScene:createLayer()
     local layer = cc.Layer:create()
     local bg = cc.Sprite:create("bg_main_169.png")
---    cclog(self.origin.x .. ":" .. self.origin.y)
     bg:setPosition(self.origin.x + self.visibleSize.width * 0.5, self.origin.y + self.visibleSize.height * 0.5)
     layer:addChild(bg)
     
-    local btn = cc.Sprite:create("logo.jpg")
-    btn:setAnchorPoint(0,0)
-    btn:setPosition(self.origin.x, self.origin.y)
+    local btn = cc.Sprite:create("logo.jpg") 
+    btn:setPosition(self.origin.x + self.visibleSize.width * 0.5, self.origin.y + self.visibleSize.height * 0.5)
     layer:addChild(btn)
     
     
