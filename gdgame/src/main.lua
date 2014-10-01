@@ -53,9 +53,6 @@ local function main()
     else
         cc.Director:getInstance():runWithScene(gameScene)
     end
-    
-    
-
 end
 
 

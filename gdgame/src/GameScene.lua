@@ -1,6 +1,11 @@
 require "Cocos2d"
 require "Cocos2dConstants"
 
+-- cclog
+local cclog = function(...)
+    print(string.format(...))
+end
+
 local GameScene = class("GameScene",function()
     return cc.Scene:create()
 end)
@@ -33,11 +38,13 @@ function GameScene:createLayer()
     bg:setPosition(self.origin.x + self.visibleSize.width * 0.5, self.origin.y + self.visibleSize.height * 0.5)
     layer:addChild(bg)
     
-    local btn = cc.Sprite:create("logo.jpg") 
-    btn:setPosition(self.origin.x + self.visibleSize.width * 0.5, self.origin.y + self.visibleSize.height * 0.5)
-    layer:addChild(btn)
+    local btn = cc.Sprite:create("logo.jpg")
+    btn:setAnchorPoint(0,0)
+--    btn:setPosition(self.origin.x, self.origin.y) 
+    btn:setPosition(0,0)
+    layer:addChild(btn) 
     
-    
+    cclog(self.origin.x ..":".. self.origin.y   ..":".. self.visibleSize.width ..":".. self.visibleSize.height)
     
 --    local btnItem = cc.MenuItemImage:create("main_head_name_bg_gold.pvr.ccz","main_head_name_bg_silver.pvr.ccz","main_head_name_bg_silver.pvr.ccz")
 --    btnItem:setPosition(self.winSize.width / 2, self.winSize.height / 2)
