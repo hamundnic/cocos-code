@@ -48,8 +48,8 @@ function LoginScene:init()
     
     local btn0Handle = function ()
         cclog("bnt0 click")
-        local ExampleScene = require("ExampleScene")
-        local mainScene = ExampleScene.create()
+        local MainScene = require("MainScene")
+        local mainScene = MainScene.create()
         cc.Director:getInstance():replaceScene(mainScene)
     end
     ScriptHandlerMgr:getInstance():registerScriptHandler(btn0,btn0Handle,cc.Handler.MENU_CLICKED)
