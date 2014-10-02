@@ -11,7 +11,6 @@ local GameScene = class("GameScene",function()
 end)
 
 function GameScene.create()
-
     local scene = GameScene.new()
     scene:addChild(scene:createLayer())
     return scene
