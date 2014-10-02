@@ -39,9 +39,7 @@ function MainScene:init()
     local moveby = cc.MoveBy:create(2.0,cc.p(-300,0))
     voidNode:runAction(moveby)
     
-    
     self:addChild(voidNode)
-    
     return true
 end
 
