@@ -1,0 +1,7 @@
+--gd = gd or {}
+--
+--function gd.Ref:create()
+--    local cls
+--    cls = {}
+--    return cls
+--end

@@ -10,7 +10,6 @@ function GameScene.create()
     return scene
 end
 
-
 function GameScene:ctor()
     self.visibleSize = cc.Director:getInstance():getVisibleSize()
     self.origin = cc.Director:getInstance():getVisibleOrigin()

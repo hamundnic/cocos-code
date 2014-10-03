@@ -33,6 +33,11 @@ function MainScene:init()
     local moveby = cc.MoveBy:create(2.0,cc.p(-300,0))
     voidNode:runAction(moveby)
     
+    local LoginService = require("service/LoginService")
+    local loginService = LoginService:create()
+    local testEntity = loginService:test()
+    cclog(testEntity.a)
+    
     self:addChild(voidNode)
     return true
 end
