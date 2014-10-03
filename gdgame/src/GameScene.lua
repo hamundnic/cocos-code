@@ -53,6 +53,13 @@ function GameScene:createLayer()
 --    local menu = cc.Menu:create(btnItem)
 --    menu:setPosition(0,0)
 --    layer:addChild(menu)
+
+    local maskSprite = MaskSprite:create("main_bg_grass_left.jpg")
+    maskSprite:setMask("main_bg_grass_left_alpha_mask","shader/mask.vsh","shader/mask.fsh")
+    maskSprite:setAnchorPoint(0,0)
+    maskSprite:setPosition(0,0)
+    layer:addChild(maskSprite)
+    
     return layer
 end
 
