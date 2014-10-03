@@ -16,9 +16,6 @@ end
 -- overwrite
 function MainScene:init()
     -- do samething my init()
-    
-    cclog("MainScene")
-    
     local bg1 = cc.Sprite:create("main_bg_sky_left.jpg")
     bg1:setScale(2.689)
     bg1:setAnchorPoint(0,0)

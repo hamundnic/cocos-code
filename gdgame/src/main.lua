@@ -1,9 +1,13 @@
 require "Cocos2d"
-require("src/gdgame")
+--require("src/gdgame")
 -- cclog
 --local cclog = function(...)
 --    print(string.format(...))
 --end
+
+function cclog(...)
+    print(string.format(...))
+end
 
 -- for CCLuaEngine traceback
 function __G__TRACKBACK__(msg)
