@@ -1,22 +1,15 @@
 require "Cocos2d"
 require "Cocos2dConstants"
-
--- cclog
-local cclog = function(...)
-    print(string.format(...))
-end
-
 local GameScene = class("GameScene",function()
     return cc.Scene:create()
 end)
 
 function GameScene.create()
-
     local scene = GameScene.new()
     scene:addChild(scene:createLayer())
+    scene:addChild(scene:addSpineAnimation())
     return scene
 end
-
 
 function GameScene:ctor()
     self.visibleSize = cc.Director:getInstance():getVisibleSize()
@@ -53,6 +46,59 @@ function GameScene:createLayer()
 --    menu:setPosition(0,0)
 --    layer:addChild(menu)
     return layer
+end
+
+function GameScene:addSpineAnimation()
+    local goblin = cc.Layer:create()
+    local s = cc.Director:getInstance():getWinSize()
+
+    local goblins_ffd
+    local addGoblins = function()
+        --please use sp.SkeletonAnimation:create,not sp.SkeletonAnimation:createWithFile
+        goblins_ffd = sp.SkeletonAnimation:create('goblins-ffd.json','goblins-ffd.atlas',0.6)
+        goblin:addChild(goblins_ffd)
+        goblins_ffd:setSkin("goblin")
+        goblins_ffd:setPosition(cc.p(s.width/2, 20))
+        goblins_ffd:setDebugBones(true)
+        goblins_ffd:setAnimation(0,"walk",true)
+        goblins_ffd:registerSpineEventHandler(function(event)
+            if event.type == 'start' then
+                print(string.format("[spine] %d start: %s", 
+                    event.trackIndex,
+                    event.animation))
+            elseif event.type == 'end' then
+                print(string.format("[spine] %d end: %s", 
+                    event.trackIndex,
+                    event.animation))
+            elseif event.type == 'complete' then
+                print(string.format("[spine] %d complete: %s, %d", 
+                    event.trackIndex,
+                    event.animation, 
+                    event.loopCount))
+            elseif event.type == 'event' then
+                print(string.format("[spine] %d event: %s, %s: %d, %f, %s", 
+                    event.trackIndex,
+                    event.animation,
+                    event.eventData.name,
+                    event.eventData.intValue,
+                    event.eventData.floatValue,
+                    event.eventData.stringValue))
+            end
+        end)
+    end
+    
+    local function onNodeEvent(event)
+        if event == "enter" then
+            cclog("SpineTestLayer1#onEnter")
+            addGoblins()
+        elseif event == "enterTransitionFinish" then
+            cclog("SceneTestLayer1#onEnterTransitionDidFinish")
+        end
+    end
+
+    goblin:registerScriptHandler(onNodeEvent)
+    
+    return goblin
 end
 
 return GameScene

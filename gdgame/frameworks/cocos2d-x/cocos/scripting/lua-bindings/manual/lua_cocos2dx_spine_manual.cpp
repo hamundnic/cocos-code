@@ -208,7 +208,7 @@ static int tolua_Cocos2d_CCSkeletonAnimation_setTimeScale00(lua_State* tolua_S)
     	LuaSkeletonAnimation* self    = (LuaSkeletonAnimation*)  tolua_tousertype(tolua_S,1,0);
         if (NULL != self ) {
         	LUA_NUMBER scale = tolua_tonumber(tolua_S, 2, 1);
-        	self->timeScale = scale;
+			self->setTimeScale(scale);
         }
     }
     return 0;
@@ -235,7 +235,7 @@ static int tolua_Cocos2d_CCSkeletonAnimation_setDebugSlots00(lua_State* tolua_S)
     	LuaSkeletonAnimation* self    = (LuaSkeletonAnimation*)  tolua_tousertype(tolua_S,1,0);
         if (NULL != self ) {
         	bool debugSlots = tolua_toboolean(tolua_S, 2, 1);
-        	self->debugSlots = debugSlots;
+			self->setDebugSlotsEnabled(debugSlots);
         }
     }
     return 0;
@@ -262,7 +262,7 @@ static int tolua_Cocos2d_CCSkeletonAnimation_setDebugBones00(lua_State* tolua_S)
     	LuaSkeletonAnimation* self    = (LuaSkeletonAnimation*)  tolua_tousertype(tolua_S,1,0);
         if (NULL != self ) {
         	bool debugBones = tolua_toboolean(tolua_S, 2, 1);
-        	self->debugBones = debugBones;
+			self->setDebugBonesEnabled(debugBones);
         }
     }
     return 0;
@@ -289,7 +289,7 @@ static int tolua_Cocos2d_CCSkeletonAnimation_setPremultipliedAlpha00(lua_State* 
     	LuaSkeletonAnimation* self    = (LuaSkeletonAnimation*)  tolua_tousertype(tolua_S,1,0);
         if (NULL != self ) {
         	bool premultipliedAlpha = tolua_toboolean(tolua_S, 2, 1);
-        	self->premultipliedAlpha = premultipliedAlpha;
+        	self->setOpacityModifyRGB(premultipliedAlpha);
         }
     }
     return 0;

@@ -1,9 +1,9 @@
  /****************************************************************************
  Copyright (c) 2013      Edward Zhou
  Copyright (c) 2013-2014 Chukong Technologies Inc.
- 
- http://www.cocos2d-x.org
- 
+
+http://www.cocos2d-x.org
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -54,21 +54,21 @@ static int SendSpineEventToLua(int nHandler, spine::SkeletonAnimation* node, int
 
     int nRet = 0;
 
-	spTrackEntry* entry = spAnimationState_getCurrent(node->state, trackIndex);
+	spTrackEntry* entry = spAnimationState_getCurrent(node->getState(), trackIndex);
 	std::string animationName = (entry && entry->animation) ? entry->animation->name : "";
 	std::string eventType = "";
 
 	switch (type) {
-	case ANIMATION_START:
+	case SP_ANIMATION_START:
 		eventType = "start";
 		break;
-	case ANIMATION_END:
+	case SP_ANIMATION_END:
 		eventType = "end";
 		break;
-	case ANIMATION_COMPLETE:
+	case SP_ANIMATION_COMPLETE:
 		eventType = "complete";
 		break;
-	case ANIMATION_EVENT:
+	case SP_ANIMATION_EVENT:
 		eventType = "event";
 		break;
 	}
@@ -98,7 +98,39 @@ static int SendSpineEventToLua(int nHandler, spine::SkeletonAnimation* node, int
 LuaSkeletonAnimation::LuaSkeletonAnimation (const char* skeletonDataFile, const char* atlasFile, float scale)
 : spine::SkeletonAnimation(skeletonDataFile, atlasFile, scale)
 {
-	this->setAnimationListener(this, animationStateEvent_selector(LuaSkeletonAnimation::animationStateEvent));
+	// this->setAnimationListener(this, animationStateEvent_selector(LuaSkeletonAnimation::animationStateEvent));
+	this->setStartListener( [this] (int trackIndex) {
+		// spTrackEntry* entry = spAnimationState_getCurrent(skeletonNode->getState(), trackIndex);
+		// const char* animationName = (entry && entry->animation) ? entry->animation->name : 0;
+		// log("%d start: %s", trackIndex, animationName);
+		
+		int nHandler = ScriptHandlerMgr::getInstance()->getObjectHandler((void*)this, ScriptHandlerMgr::HandlerType::EVENT_SPINE);
+		if (0 != nHandler) {
+			SendSpineEventToLua(nHandler, this, trackIndex, SP_ANIMATION_START, NULL, 0);
+		}
+	});
+	this->setEndListener( [this] (int trackIndex) {
+		// log("%d end", trackIndex);
+		
+		int nHandler = ScriptHandlerMgr::getInstance()->getObjectHandler((void*)this, ScriptHandlerMgr::HandlerType::EVENT_SPINE);
+		if (0 != nHandler) {
+			SendSpineEventToLua(nHandler, this, trackIndex, SP_ANIMATION_END, NULL, 0);
+		}
+	});
+	this->setCompleteListener( [this] (int trackIndex, int loopCount) {
+		// log("%d complete: %d", trackIndex, loopCount);
+		int nHandler = ScriptHandlerMgr::getInstance()->getObjectHandler((void*)this, ScriptHandlerMgr::HandlerType::EVENT_SPINE);
+		if (0 != nHandler) {
+			SendSpineEventToLua(nHandler, this, trackIndex, SP_ANIMATION_COMPLETE, NULL, loopCount);
+		}
+	});
+	this->setEventListener( [this] (int trackIndex, spEvent* event) {
+		// log("%d event: %s, %d, %f, %s", trackIndex, event->data->name, event->intValue, event->floatValue, event->stringValue);
+		int nHandler = ScriptHandlerMgr::getInstance()->getObjectHandler((void*)this, ScriptHandlerMgr::HandlerType::EVENT_SPINE);
+		if (0 != nHandler) {
+			SendSpineEventToLua(nHandler, this, trackIndex, SP_ANIMATION_EVENT, event, 0);
+		}
+	});
 }
 
 
@@ -114,10 +146,10 @@ LuaSkeletonAnimation* LuaSkeletonAnimation::createWithFile (const char* skeleton
 	return node;
 }
 
-void LuaSkeletonAnimation::animationStateEvent (spine::SkeletonAnimation* node, int trackIndex, spEventType type, spEvent* event, int loopCount)
-{
-    int nHandler = ScriptHandlerMgr::getInstance()->getObjectHandler((void*)this, ScriptHandlerMgr::HandlerType::EVENT_SPINE);
-    if (0 != nHandler) {
-        SendSpineEventToLua(nHandler, node, trackIndex, type, event, loopCount);
-    }
-}
+// void LuaSkeletonAnimation::animationStateEvent (spine::SkeletonAnimation* node, int trackIndex, spEventType type, spEvent* event, int loopCount)
+// {
+    // int nHandler = ScriptHandlerMgr::getInstance()->getObjectHandler((void*)this, ScriptHandlerMgr::HandlerType::EVENT_SPINE);
+    // if (0 != nHandler) {
+        // SendSpineEventToLua(nHandler, node, trackIndex, type, event, loopCount);
+    // }
+// }

@@ -7,7 +7,7 @@
 --------------------------------
 -- @function [parent=#TableView] updateCellAtIndex 
 -- @param self
--- @param #long long
+-- @param #int int
         
 --------------------------------
 -- @function [parent=#TableView] setVerticalFillOrder 
@@ -31,7 +31,7 @@
 --------------------------------
 -- @function [parent=#TableView] removeCellAtIndex 
 -- @param self
--- @param #long long
+-- @param #int int
         
 --------------------------------
 -- @function [parent=#TableView] initWithViewSize 
@@ -52,12 +52,12 @@
 --------------------------------
 -- @function [parent=#TableView] insertCellAtIndex 
 -- @param self
--- @param #long long
+-- @param #int int
         
 --------------------------------
 -- @function [parent=#TableView] cellAtIndex 
 -- @param self
--- @param #long long
+-- @param #int int
 -- @return TableViewCell#TableViewCell ret (return value: cc.TableViewCell)
         
 --------------------------------
