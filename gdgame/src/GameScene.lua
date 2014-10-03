@@ -1,23 +1,15 @@
 require "Cocos2d"
 require "Cocos2dConstants"
-
--- cclog
-local cclog = function(...)
-    print(string.format(...))
-end
-
 local GameScene = class("GameScene",function()
     return cc.Scene:create()
 end)
 
 function GameScene.create()
-
     local scene = GameScene.new()
     scene:addChild(scene:createLayer())
     scene:addChild(scene:addSpineAnimation())
     return scene
 end
-
 
 function GameScene:ctor()
     self.visibleSize = cc.Director:getInstance():getVisibleSize()
