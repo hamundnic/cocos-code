@@ -1,7 +1,6 @@
---gd = gd or {}
---
---function gd.Ref:create()
---    local cls
---    cls = {}
---    return cls
---end
+gd = gd or {}
+
+function getJsonstring(url)
+    local jsonstring = "{\"k2\":\"v2\"}"
+    return jsonstring
+end

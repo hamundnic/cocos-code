@@ -39,7 +39,7 @@ function MainScene:init()
     local LoginService = require("service/LoginService")
     local loginService = LoginService:create()
     local loginEntity = loginService:login()
-    cclog(loginEntity["k1"])
+--    cclog(loginEntity["k1"])
     self:addChild(voidNode)
     
     local maskSprite = MaskSprite:create("main_bg_grass_left.jpg")
