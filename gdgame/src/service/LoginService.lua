@@ -36,11 +36,6 @@ function LoginService.create()
         service:init()
     end
     return service
---    local scene = LoginService.extend(cc.Node:create())
---    if nil ~= scene then
---        scene:init()
---    end
---    return scene
 end
 -- end static create object
 
