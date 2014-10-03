@@ -45,6 +45,7 @@ function GameScene:createLayer()
 --    local menu = cc.Menu:create(btnItem)
 --    menu:setPosition(0,0)
 --    layer:addChild(menu)
+    
     return layer
 end
 

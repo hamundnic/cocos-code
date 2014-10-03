@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "Runtime.h"
 #include "ConfigParser.h"
+#include "lua_cocos2dx_masksprite.hpp"
 
 using namespace CocosDenshion;
 
@@ -55,7 +56,12 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     LuaStack* stack = engine->getLuaStack();
     stack->setXXTEAKeyAndSign("2dxLua", strlen("2dxLua"), "XXTEA", strlen("XXTEA"));
-    
+	
+	auto state = stack->getLuaState();
+	lua_getglobal(state, "_G");
+	register_all_cocos2dx_masksprite(state);
+	lua_pop(state, 1);
+	
     //register custom function
     //LuaStack* stack = engine->getLuaStack();
     //register_custom_function(stack->getLuaState());

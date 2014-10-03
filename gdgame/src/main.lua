@@ -1,4 +1,5 @@
 require "Cocos2d"
+require "src/global/gdgameConstants"
 require "src/global/gdgame"
 --require("src/gdgame")
 -- cclog
