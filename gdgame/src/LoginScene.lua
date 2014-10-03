@@ -40,7 +40,6 @@ function LoginScene:init()
     menu:setPosition(0,0)
     layer:addChild(menu)
     
-    
     local btn0Handle = function ()
         cclog("bnt0 click")
         local MainScene = require("MainScene")

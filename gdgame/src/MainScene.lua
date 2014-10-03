@@ -15,6 +15,9 @@ end
 
 -- overwrite
 function MainScene:init()
+    self._visibleSize = cc.Director:getInstance():getVisibleSize()
+    self._origin = cc.Director:getInstance():getVisibleOrigin()
+
     -- do samething my init()
     local bg1 = cc.Sprite:create("main_bg_sky_left.jpg")
     bg1:setScale(2.689)
@@ -37,8 +40,21 @@ function MainScene:init()
     local loginService = LoginService:create()
     local loginEntity = loginService:login()
     cclog(loginEntity["k1"])
-    
     self:addChild(voidNode)
+    
+    local item1 = cc.MenuItemImage:create("main_menu_todolist_1.jpg","main_menu_todolist_2.jpg")
+    item1:setPosition(100,100)
+    local menu = cc.Menu:create(item1)
+    menu:setPosition(0,0)
+    self:addChild(menu)
+    
+    local item1Handle = function ()
+        local BattleScene = require("BattleScene")
+        local scene = BattleScene.create()
+        cc.Director:getInstance():pushScene(scene)
+    end
+    ScriptHandlerMgr:getInstance():registerScriptHandler(item1,item1Handle,cc.Handler.MENU_CLICKED)
+    
     return true
 end
 
