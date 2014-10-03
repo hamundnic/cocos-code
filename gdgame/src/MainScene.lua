@@ -1,6 +1,10 @@
 --create Class
 local MainScene = class("MainScene")
 MainScene.__index = MainScene
+MainScene._widgets = {}
+
+local LoginService = require("service/LoginService")
+local loginService = LoginService:create()
 
 function MainScene.extend(target)
     local t = tolua.getpeer(target)
@@ -33,13 +37,9 @@ function MainScene:init()
     voidNode:addChild(bg1, -1, cc.p(0.4,0), cc.p(0,0))
     voidNode:addChild(bg2, 1, cc.p(2.2,0), cc.p(0,0))
     
-    local moveby = cc.MoveBy:create(2.0,cc.p(-300,0))
-    voidNode:runAction(moveby)
+--    local moveby = cc.MoveBy:create(2.0,cc.p(-300,0))
+--    voidNode:runAction(moveby)
     
-    local LoginService = require("service/LoginService")
-    local loginService = LoginService:create()
-    local loginEntity = loginService:login()
---    cclog(loginEntity["k1"])
     self:addChild(voidNode)
     
     local maskSprite = MaskSprite:create("main_bg_grass_left.jpg")
@@ -54,13 +54,27 @@ function MainScene:init()
     menu:setPosition(0,0)
     self:addChild(menu)
     
+    table.insert(self._widgets,menu)
+    
     local item1Handle = function ()
-        local BattleScene = require("BattleScene")
-        local scene = BattleScene.create()
-        cc.Director:getInstance():pushScene(scene)
+--        local BattleScene = require("BattleScene")
+--        local scene = BattleScene.create()
+--        cc.Director:getInstance():pushScene(scene)
+
+--        local s = cc.Sprite:create("logo.jpg")
+--        s:setPosition(300,300)
+--        cc.Director:getInstance():getRunningScene():addChild(s)
+--        cc.Director:getInstance():getRunningScene():setEnabled(false)
+        
+        local loginEntity = loginService:login()
     end
     ScriptHandlerMgr:getInstance():registerScriptHandler(item1,item1Handle,cc.Handler.MENU_CLICKED)
     
+--    local s = cc.Sprite:create("logo.jpg")
+--    s:setPosition(300,300)
+--    self:addChild(s)
+    
+    self:setEnabled(true)
     return true
 end
 
@@ -74,5 +88,10 @@ function MainScene.create()
 end
 -- end static create object
 
+function MainScene:setEnabled(enabled)
+    for _, widget in pairs(self._widgets) do
+    	widget:setEnabled(enabled)
+    end
+end
 
 return MainScene

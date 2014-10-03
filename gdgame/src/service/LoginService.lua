@@ -30,18 +30,21 @@ function LoginService.create()
 end
 -- end static create object
 function LoginService:login()
+
+    local s = cc.Sprite:create("res/UI/alpha/VGA/logo.jpg")
+    s:setPosition(300,300)
+    cc.Director:getInstance():getRunningScene():addChild(s)
+    cc.Director:getInstance():getRunningScene():setEnabled(false)
+
     local getJsonstring = function()
-    
---        s = cc.Sprite:create("logo.jpg")
---        s:setPosition(500,300)
---        cc.Director:getInstance():getRunningScene():addChild(s)
-    
         local xhr = cc.XMLHttpRequest:new()
             xhr.responseType = cc.XMLHTTPREQUEST_RESPONSE_STRING
             xhr:open("GET", "http://httpbin.org/get")
 
             local function onReadyStateChange()
-                local statusString = "Http Status Code:"..xhr.statusText
+            local statusString = "Http Status Code:"..xhr.statusText
+            s:removeFromParentAndCleanup(false)
+            cc.Director:getInstance():getRunningScene():setEnabled(true)
 --                s:removeFromParentAndCleanup()
                 print(xhr.response)
             end
@@ -49,7 +52,7 @@ function LoginService:login()
             xhr:send()
     end
 
---    getJsonstring()
+    getJsonstring()
     local jsonstring = "{\"a\":1}"
     cclog("LoginService-test():" .. jsonstring)
     local json = require("json");
