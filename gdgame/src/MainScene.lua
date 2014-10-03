@@ -39,7 +39,7 @@ function MainScene:init()
     local LoginService = require("service/LoginService")
     local loginService = LoginService:create()
     local loginEntity = loginService:login()
-    cclog(loginEntity["k1"])
+--    cclog(loginEntity["k1"])
     self:addChild(voidNode)
     
     local item1 = cc.MenuItemImage:create("main_menu_todolist_1.jpg","main_menu_todolist_2.jpg")
