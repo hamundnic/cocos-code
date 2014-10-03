@@ -46,8 +46,6 @@ local function main()
     cc.FileUtils:getInstance():addSearchPath("res/UI/alpha/VGA")
     cc.FileUtils:getInstance():addSearchPath("res/sound") 
     
-    cclog("aaaaaa")
-    
     --create scene 
 --    local GameScene = require("GameScene")
 --    local scene = GameScene.create()

@@ -35,8 +35,8 @@ function MainScene:init()
     
     local LoginService = require("service/LoginService")
     local loginService = LoginService:create()
-    local testEntity = loginService:test()
-    cclog(testEntity.a)
+    local loginEntity = loginService:login()
+    cclog(loginEntity["k1"])
     
     self:addChild(voidNode)
     return true

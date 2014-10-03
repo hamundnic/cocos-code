@@ -1,12 +1,3 @@
---gd = gd or {}
---gd.Ref = gd.Ref or {} 
---
---function gd.Ref:create()
---    local cls
---    cls = {}
---    return cls
---end
-
 --create Class
 local LoginService = class("LoginService")
 LoginService.__index = LoginService
@@ -38,14 +29,14 @@ function LoginService.create()
     return service
 end
 -- end static create object
+function LoginService:login()
 
-function LoginService:test()
-    cclog("LoginService:test()")
-    local testEntity = {a=100}
-    return testEntity
+    local jsonstring = cc.FileUtils:getInstance():getStringFromFile("api/login.json")
+    cclog("LoginService-test():" .. jsonstring)
+    local json = require("json");
+    
+    local loginEntity = json.decode(jsonstring)
+    return loginEntity
 end
-
-
-
 
 return LoginService
