@@ -1,8 +1,3 @@
--- cclog
-local cclog = function(...)
-    print(string.format(...))
-end
-
 --create Class
 local ExampleScene = class("ExampleScene")
 ExampleScene.__index = ExampleScene

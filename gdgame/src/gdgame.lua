@@ -1,4 +1,4 @@
 -- cclog
-function cclog(...)
-    print(string.format(...))
-end
+--function cclog(...)
+--    print(string.format(...))
+--end

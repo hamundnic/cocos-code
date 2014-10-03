@@ -1,10 +1,9 @@
-
 require "Cocos2d"
-
+require("src/gdgame")
 -- cclog
-local cclog = function(...)
-    print(string.format(...))
-end
+--local cclog = function(...)
+--    print(string.format(...))
+--end
 
 -- for CCLuaEngine traceback
 function __G__TRACKBACK__(msg)
@@ -41,6 +40,8 @@ local function main()
     cc.FileUtils:getInstance():addSearchPath("res")
     cc.FileUtils:getInstance():addSearchPath("res/UI/alpha/VGA")
     cc.FileUtils:getInstance():addSearchPath("res/sound") 
+    
+    cclog("aaaaaa")
     
     --create scene 
 --    local GameScene = require("GameScene")

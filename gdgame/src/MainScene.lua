@@ -1,8 +1,3 @@
--- cclog
-local cclog = function(...)
-    print(string.format(...))
-end
-
 --create Class
 local MainScene = class("MainScene")
 MainScene.__index = MainScene
@@ -21,6 +16,8 @@ end
 -- overwrite
 function MainScene:init()
     -- do samething my init()
+    
+    cclog("MainScene")
     
     local bg1 = cc.Sprite:create("main_bg_sky_left.jpg")
     bg1:setScale(2.689)

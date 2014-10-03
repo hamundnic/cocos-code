@@ -1,11 +1,5 @@
 require "Cocos2d"
 require "Cocos2dConstants"
-
--- cclog
-local cclog = function(...)
-    print(string.format(...))
-end
-
 local GameScene = class("GameScene",function()
     return cc.Scene:create()
 end)

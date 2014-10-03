@@ -1,10 +1,5 @@
 require "Cocos2d"
 
--- cclog
-local cclog = function(...)
-    print(string.format(...))
-end
-
 --create Class
 local LoginScene = class("LoginScene")
 LoginScene.__index = LoginScene
