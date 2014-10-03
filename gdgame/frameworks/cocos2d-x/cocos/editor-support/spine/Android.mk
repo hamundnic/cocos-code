@@ -14,21 +14,26 @@ Attachment.cpp \
 AttachmentLoader.cpp \
 Bone.cpp \
 BoneData.cpp \
-CCSkeleton.cpp \
-CCSkeletonAnimation.cpp \
-Json.cpp \
-RegionAttachment.cpp \
-Skeleton.cpp \
-SkeletonData.cpp \
-SkeletonJson.cpp \
-Skin.cpp \
-Slot.cpp \
-SlotData.cpp \
 BoundingBoxAttachment.cpp \
 Event.cpp \
 EventData.cpp \
-SkeletonBounds.cpp \
 extension.cpp \
+IkConstraint.cpp \
+IkConstraintData.cpp \
+Json.cpp \
+MeshAttachment.cpp \
+PolygonBatch.cpp \
+RegionAttachment.cpp \
+Skeleton.cpp \
+SkeletonAnimation.cpp \
+SkeletonBounds.cpp \
+SkeletonData.cpp \
+SkeletonJson.cpp \
+SkeletonRenderer.cpp \
+Skin.cpp \
+SkinnedMeshAttachment.cpp \
+Slot.cpp \
+SlotData.cpp \
 spine-cocos2dx.cpp
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/..

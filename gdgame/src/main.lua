@@ -42,6 +42,7 @@ local function main()
     cc.FileUtils:getInstance():addSearchPath("res")
     cc.FileUtils:getInstance():addSearchPath("res/UI/alpha/VGA")
     cc.FileUtils:getInstance():addSearchPath("res/sound") 
+    cc.FileUtils:getInstance():addSearchPath("res/avatars") 
     
     --create scene 
     local scene = require("GameScene")
