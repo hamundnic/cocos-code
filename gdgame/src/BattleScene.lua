@@ -1,16 +1,7 @@
 --create Class
-local BattleScene = class("BattleScene")
-BattleScene.__index = BattleScene
-
-function BattleScene.extend(target)
-    local t = tolua.getpeer(target)
-    if not t then
-        t = {}
-        tolua.setpeer(target, t)
-    end
-    setmetatable(t, BattleScene)
-    return target
-end
+local BattleScene = class("BattleScene", function ()
+    return cc.Scene:create()
+end)
 -- end create Class
 
 -- overwrite
@@ -44,7 +35,7 @@ end
 
 --static create object
 function BattleScene.create()
-    local scene = BattleScene.extend(cc.Scene:create())
+    local scene = BattleScene.new()
     if nil ~= scene then
         scene:init()
     end
@@ -52,6 +43,17 @@ function BattleScene.create()
 end
 -- end static create object
 
+function BattleScene:ctor()
+    self._widget = {}
+    self._visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
+    self._visibleSize = cc.Director:getInstance():getVisibleSize()
+    self._winSize = cc.Director:getInstance():getWinSize() 
+    self._centerPoint = cc.p(self._visibleOrigin.x + self._visibleSize.width * 0.5, self._visibleOrigin.y + self._visibleSize.height * 0.5)
+    self._zeroPoint = cc.p(0,0)
+end
+
+
+--logic
 function BattleScene:addSpineAnimation()
     local goblin = cc.Layer:create()
     local s = cc.Director:getInstance():getWinSize()
