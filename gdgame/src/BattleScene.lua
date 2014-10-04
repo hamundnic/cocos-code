@@ -17,20 +17,28 @@ end
 function BattleScene:init()
     -- do samething my init()
     
-    local item1 = cc.MenuItemImage:create("main_menu_todolist_1.jpg","main_menu_todolist_2.jpg")
+    local item1 = cc.MenuItemImage:create("login_btn0.png","login_btn0_select.png")
     item1:setPosition(100,100)
-    local menu = cc.Menu:create(item1)
+    local item2 = cc.MenuItemImage:create("login_btn1.png","login_btn1_select.png")
+    item2:setPosition(100,500)
+    
+    local menu = cc.Menu:create(item1,item2)
     menu:setPosition(0,0)
     self:addChild(menu)
 
     local item1Handle = function ()
-        cc.Director:getInstance():popScene()
+        local BagScene = require("BagScene")
+        local scene = BagScene:create()
+        cc.Director:getInstance():pushScene(scene)
     end
+    local item2Handle = function ()
+        cc.Director:getInstance():popScene()
+    end 
     ScriptHandlerMgr:getInstance():registerScriptHandler(item1,item1Handle,cc.Handler.MENU_CLICKED)
+    ScriptHandlerMgr:getInstance():registerScriptHandler(item2,item2Handle,cc.Handler.MENU_CLICKED)
+    
     
     self:addChild(self:addSpineAnimation())
-    
-    
     return true
 end
 

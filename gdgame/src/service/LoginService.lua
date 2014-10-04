@@ -1,6 +1,7 @@
 --create Class
 local LoginService = class("LoginService")
 LoginService.__index = LoginService
+local json = require("json");
 
 function LoginService.extend(target)
     local t = tolua.getpeer(target)
@@ -28,36 +29,42 @@ function LoginService.create()
     end
     return service
 end
+
 -- end static create object
-function LoginService:login()
-
-    local s = cc.Sprite:create("res/UI/alpha/VGA/logo.jpg")
-    s:setPosition(300,300)
-    cc.Director:getInstance():getRunningScene():addChild(s)
-    cc.Director:getInstance():getRunningScene():setEnabled(false)
-
-    local getJsonstring = function()
+function LoginService:login(callback)
+    local request = function(url)
+        gd.load()
         local xhr = cc.XMLHttpRequest:new()
-            xhr.responseType = cc.XMLHTTPREQUEST_RESPONSE_STRING
-            xhr:open("GET", "http://httpbin.org/get")
-
-            local function onReadyStateChange()
-            local statusString = "Http Status Code:"..xhr.statusText
-            s:removeFromParentAndCleanup(false)
-            cc.Director:getInstance():getRunningScene():setEnabled(true)
---                s:removeFromParentAndCleanup()
-                print(xhr.response)
+        xhr.responseType = cc.XMLHTTPREQUEST_RESPONSE_STRING
+        xhr:open("GET", url)
+        local function onReadyStateChange()
+            if xhr.status == 200 then
+                cclog(xhr.response)
+                local entity = json.decode(xhr.response)
+                callback(entity)
+            else
+                cclog("process error:" .. xhr.statusText)
             end
-            xhr:registerScriptHandler(onReadyStateChange)
-            xhr:send()
+            gd.unload()
+        end
+        xhr:registerScriptHandler(onReadyStateChange)
+        xhr:send()
     end
-
-    getJsonstring()
-    local jsonstring = "{\"a\":1}"
-    cclog("LoginService-test():" .. jsonstring)
-    local json = require("json");
-    local loginEntity = json.decode(jsonstring)
-    return loginEntity
+    
+    local requestLocal = function ()
+        local jsonstring = cc.FileUtils:getInstance():getStringFromFile("api/login.json")
+        cclog(jsonstring)
+        local entity = json.decode(jsonstring)
+        callback(entity)
+    end
+    
+    local url = "http://httpbin.org/get"
+    if gd.debug then
+        requestLocal(url)
+    else
+        request(url)
+    end
+    
 end
 
 return LoginService
