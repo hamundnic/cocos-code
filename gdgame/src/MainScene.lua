@@ -57,23 +57,23 @@ function MainScene:init()
     table.insert(self._widgets,menu)
     
     local item1Handle = function ()
---        local BattleScene = require("BattleScene")
---        local scene = BattleScene.create()
---        cc.Director:getInstance():pushScene(scene)
-
 --        local s = cc.Sprite:create("logo.jpg")
 --        s:setPosition(300,300)
 --        cc.Director:getInstance():getRunningScene():addChild(s)
 --        cc.Director:getInstance():getRunningScene():setEnabled(false)
         
-        local loginEntity = loginService:login()
+        local loginCallback = function (entity)
+            --update ui
+            cclog("origin：" .. entity.origin)
+            local Scene = require("BattleScene")
+--            local Scene = require("ExampelScene")
+            local scene = Scene.create()
+            cc.Director:getInstance():pushScene(scene)
+        end
+        
+        local loginEntity = loginService:login(loginCallback)
     end
     ScriptHandlerMgr:getInstance():registerScriptHandler(item1,item1Handle,cc.Handler.MENU_CLICKED)
-    
---    local s = cc.Sprite:create("logo.jpg")
---    s:setPosition(300,300)
---    self:addChild(s)
-    
     self:setEnabled(true)
     return true
 end

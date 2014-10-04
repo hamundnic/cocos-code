@@ -1,42 +1,41 @@
 --create Class
-local BattleScene = class("BattleScene")
-BattleScene.__index = BattleScene
-
-function BattleScene.extend(target)
-    local t = tolua.getpeer(target)
-    if not t then
-        t = {}
-        tolua.setpeer(target, t)
-    end
-    setmetatable(t, BattleScene)
-    return target
-end
+local BattleScene = class("BattleScene", function ()
+    return cc.Scene:create()
+end)
 -- end create Class
 
 -- overwrite
 function BattleScene:init()
     -- do samething my init()
     
-    local item1 = cc.MenuItemImage:create("main_menu_todolist_1.jpg","main_menu_todolist_2.jpg")
+    local item1 = cc.MenuItemImage:create("login_btn0.png","login_btn0_select.png")
     item1:setPosition(100,100)
-    local menu = cc.Menu:create(item1)
+    local item2 = cc.MenuItemImage:create("login_btn1.png","login_btn1_select.png")
+    item2:setPosition(100,500)
+    
+    local menu = cc.Menu:create(item1,item2)
     menu:setPosition(0,0)
     self:addChild(menu)
 
     local item1Handle = function ()
-        cc.Director:getInstance():popScene()
+        local BagScene = require("BagScene")
+        local scene = BagScene:create()
+        cc.Director:getInstance():pushScene(scene)
     end
+    local item2Handle = function ()
+        cc.Director:getInstance():popScene()
+    end 
     ScriptHandlerMgr:getInstance():registerScriptHandler(item1,item1Handle,cc.Handler.MENU_CLICKED)
+    ScriptHandlerMgr:getInstance():registerScriptHandler(item2,item2Handle,cc.Handler.MENU_CLICKED)
+    
     
     self:addChild(self:addSpineAnimation())
-    
-    
     return true
 end
 
 --static create object
 function BattleScene.create()
-    local scene = BattleScene.extend(cc.Scene:create())
+    local scene = BattleScene.new()
     if nil ~= scene then
         scene:init()
     end
@@ -44,6 +43,17 @@ function BattleScene.create()
 end
 -- end static create object
 
+function BattleScene:ctor()
+    self._widget = {}
+    self._visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
+    self._visibleSize = cc.Director:getInstance():getVisibleSize()
+    self._winSize = cc.Director:getInstance():getWinSize() 
+    self._centerPoint = cc.p(self._visibleOrigin.x + self._visibleSize.width * 0.5, self._visibleOrigin.y + self._visibleSize.height * 0.5)
+    self._zeroPoint = cc.p(0,0)
+end
+
+
+--logic
 function BattleScene:addSpineAnimation()
     local goblin = cc.Layer:create()
     local s = cc.Director:getInstance():getWinSize()

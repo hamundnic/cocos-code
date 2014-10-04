@@ -1,51 +1,57 @@
 --create Class
-local ExampleScene = class("ExampleScene",function ()
+local BagScene = class("BagScene", function ()
     return cc.Scene:create()
 end)
--- end create Class
 
 -- overwrite
-function ExampleScene:init()
---    local backItem = cc.MenuItemLabel:create(cc.Label:createWithTTF("返回"))
+function BagScene:init()
+    
+    local layer = cc.Layer:create()
+    self:addChild(layer)
+    
+    local bg = cc.Sprite:create("bg.jpg")
+    bg:setPosition(self._centerPoint) --设置中心点
+    local scale = cc.Director:getInstance():getWinSize().height / bg:getContentSize().height --缩放以height为准
+    bg:setScale(scale)
+    layer:addChild(bg)
+    
     local backItem = cc.MenuItemImage:create("login_btn0.png","login_btn0_select.png")
     backItem:setPosition(self._centerPoint)
     local menu = cc.Menu:create(backItem)
     menu:setPosition(self._zeroPoint)
-    self:addChild(menu)
+    layer:addChild(menu)
     local backItemHandle = function ()
         cc.Director:getInstance():popScene()
     end 
     ScriptHandlerMgr:getInstance():registerScriptHandler(backItem,backItemHandle,cc.Handler.MENU_CLICKED)
-    
-    -- do something my init()
+
     return true
 end
 
 --static create object
-function ExampleScene.create()
-    local scene = ExampleScene.new()
+function BagScene.create()
+    local scene = BagScene.new()
     if nil ~= scene then
         scene:init()
     end
     return scene
 end
 
-function ExampleScene:ctor()
+function BagScene:ctor()
     self._widget = {}
     self._visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
     self._visibleSize = cc.Director:getInstance():getVisibleSize()
     self._winSize = cc.Director:getInstance():getWinSize() 
     self._centerPoint = cc.p(self._visibleOrigin.x + self._visibleSize.width * 0.5, self._visibleOrigin.y + self._visibleSize.height * 0.5)
-    self._zeroPoint = cc.p(0,0)
+    self._zeroPoint = cc.p(0,0) 
 end
--- end static create object
 
 --set Scene which is Touched
-function ExampleScene:setEnabled(enabled)
+function BagScene:setEnabled(enabled)
     for _, widget in pairs(self._widgets) do
         widget:setEnabled(enabled)
     end
 end
 
 
-return ExampleScene
+return BagScene
