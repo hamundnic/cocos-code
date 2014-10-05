@@ -7,7 +7,7 @@ gd.ttfConfig.fontFilePath="fonts/Marker Felt.ttf"
 gd.ttfConfig.fontSize = 32
 
 function gd.load()
-    gd.loadObject = cc.Sprite:create("res/UI/alpha/VGA/logo.jpg")
+    gd.loadObject = cc.Sprite:create("ui/logo.jpg")
     local origin = cc.Director:getInstance():getVisibleOrigin()
     local size = cc.Director:getInstance():getVisibleSize()
     gd.loadObject:setPosition(origin.x + size.width * 0.5,origin.y + size.height * 0.5) 

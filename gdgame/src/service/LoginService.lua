@@ -45,8 +45,8 @@ function LoginService:login(callback, uid)
     local param = {["uid"]=uid, ["name"]="hanson"}
     local url = self:formatURLString("api/login.json",param)
     cclog(url)
-    self:requestLocal(url, callback)
---    request("http://httpbin.org/get")
+--    self:requestLocal(url, callback)
+    request("http://httpbin.org/get")
 end
 
 return LoginService

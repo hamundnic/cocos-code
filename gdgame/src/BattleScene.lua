@@ -5,11 +5,18 @@ end)
 -- end create Class
 
 -- overwrite
-function BattleScene:init()
+function BattleScene:init(content)
+    
+    cclog("content:" .. content)
+
     -- do samething my init()
     local ttfConfig = {}
     ttfConfig.fontFilePath = gd.ttfConfig.fontFilePath
     ttfConfig.fontSize = gd.ttfConfig.fontSize
+    
+    local contentLabel = cc.Label:createWithTTF(ttfConfig,content, cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width)
+    contentLabel:setPosition(500,320)
+    self:addChild(contentLabel)
     
     local nextItem = cc.MenuItemLabel:create(cc.Label:createWithTTF(ttfConfig,"next", cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width))
     nextItem:setPosition(100,100)
@@ -37,10 +44,10 @@ function BattleScene:init()
 end
 
 --static create object
-function BattleScene:create()
+function BattleScene:create(content)
     local scene = BattleScene.new()
     if nil ~= scene then
-        scene:init()
+        scene:init(content)
     end
     return scene
 end
@@ -64,7 +71,7 @@ function BattleScene:addSpineAnimation()
     local goblins_ffd
     local addGoblins = function()
         --please use sp.SkeletonAnimation:create,not sp.SkeletonAnimation:createWithFile
-        goblins_ffd = sp.SkeletonAnimation:create('goblins-ffd.json','goblins-ffd.atlas',0.6)
+        goblins_ffd = sp.SkeletonAnimation:create('avatars/goblins-ffd.json','avatars/goblins-ffd.atlas',0.6)
         goblin:addChild(goblins_ffd)
         goblins_ffd:setSkin("goblin")
         goblins_ffd:setPosition(cc.p(s.width/2, 20))
