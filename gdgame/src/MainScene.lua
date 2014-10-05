@@ -10,12 +10,12 @@ local loginService = LoginService:create()
 -- overwrite
 function MainScene:init()
     -- do samething my init()
-    local bg1 = cc.Sprite:create("main_bg_sky_left.jpg")
+    local bg1 = cc.Sprite:create("ui/main_bg_sky_left.jpg")
     bg1:setScale(2.689)
     bg1:setAnchorPoint(0,0)
     bg1:setPosition(0,0)
     
-    local bg2 = cc.Sprite:create("main_bg_mountain.png")
+    local bg2 = cc.Sprite:create("ui/main_bg_mountain.png")
     bg2:setScale(2.689)
     bg2:setAnchorPoint(0,0)
     bg2:setPosition(0,0)
@@ -31,13 +31,13 @@ function MainScene:init()
     
     
     
-    local maskSprite = MaskSprite:create("main_bg_grass_left.jpg")
-    maskSprite:setMask("main_bg_grass_left_alpha_mask","shader/mask.vsh","shader/mask.fsh")
+    local maskSprite = MaskSprite:create("ui/main_bg_grass_left.jpg")
+    maskSprite:setMask("ui/main_bg_grass_left_alpha_mask","shaders/mask.vsh","shaders/mask.fsh")
     maskSprite:setAnchorPoint(0,0)
     maskSprite:setPosition(0,0)
     self:addChild(maskSprite)
     
-    local item1 = cc.MenuItemImage:create("main_menu_todolist_1.jpg","main_menu_todolist_2.jpg")
+    local item1 = cc.MenuItemImage:create("ui/main_menu_todolist_1.jpg","ui/main_menu_todolist_2.jpg")
     item1:setPosition(100,100)
     local menu = cc.Menu:create(item1)
     menu:setPosition(0,0)
@@ -56,7 +56,7 @@ function MainScene:init()
             cclog("origin：" .. entity.origin)
             local Scene = require("BattleScene")
 --            local Scene = require("ExampelScene")
-            local scene = Scene:create()
+            local scene = Scene:create(entity.origin)
             cc.Director:getInstance():pushScene(scene)
         end
         
