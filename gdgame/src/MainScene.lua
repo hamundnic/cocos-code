@@ -58,7 +58,7 @@ function MainScene:init()
             cc.Director:getInstance():pushScene(scene)
         end
         
-        local loginEntity = loginService:login(loginCallback)
+        local loginEntity = loginService:login(loginCallback, 100)
     end
     ScriptHandlerMgr:getInstance():registerScriptHandler(item1,item1Handle,cc.Handler.MENU_CLICKED)
     self:setEnabled(true)

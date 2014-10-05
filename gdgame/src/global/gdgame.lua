@@ -1,6 +1,7 @@
 require "Cocos2d"
 gd = gd or {}
 gd.debug = false
+gd.rootUrl = "http://127.0.0.1/"
 
 function gd.load()
     gd.loadObject = cc.Sprite:create("res/UI/alpha/VGA/logo.jpg")

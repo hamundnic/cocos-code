@@ -3,8 +3,6 @@ local LoginService = class("LoginService", function ()
     return require("service/Service"):create()
 end)
 local json = require("json");
--- end create Class
-
 -- overwrite
 function LoginService:init()
     -- do samething my init()
@@ -22,10 +20,9 @@ function LoginService:create()
 end
 
 -- end static create object
-function LoginService:login(callback)
+function LoginService:login(callback, uid)
     
-    self:test()
-    
+--    self:test()
     local request = function(url)
         gd.load()
         local xhr = cc.XMLHttpRequest:new()
@@ -45,10 +42,11 @@ function LoginService:login(callback)
         xhr:send()
     end
     
-    local url = "http://httpbin.org/get?api/login.json"
+    local param = {["uid"]=uid, ["name"]="hanson"}
+    local url = self:formatURLString("api/login.json",param)
+    cclog(url)
     self:requestLocal(url, callback)
---    request(url)
-    
+--    request("http://httpbin.org/get")
 end
 
 return LoginService

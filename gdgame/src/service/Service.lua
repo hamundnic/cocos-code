@@ -29,5 +29,17 @@ function Service:requestLocal(url, callback)
     callback(entity)
 end
 
+function Service:formatURLString(api, param)
+    local urlstring = gd.rootUrl .. api
+	local i = 0
+	for key, value in pairs(param) do
+        local symbol = "&" 
+        if i == 0 then symbol = "?" end
+        urlstring = urlstring .. symbol .. key .. "=" .. value
+        i = i + 1
+	end
+	return urlstring
+end
+
 
 return Service
