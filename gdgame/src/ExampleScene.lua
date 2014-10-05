@@ -6,8 +6,13 @@ end)
 
 -- overwrite
 function ExampleScene:init()
---    local backItem = cc.MenuItemLabel:create(cc.Label:createWithTTF("返回"))
-    local backItem = cc.MenuItemImage:create("login_btn0.png","login_btn0_select.png")
+    local ttfConfig = {}
+    ttfConfig.fontFilePath="fonts/Marker Felt.ttf"
+    ttfConfig.fontSize=36
+    
+    local label1 = cc.Label:createWithTTF(ttfConfig,"back", cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width)
+    label1:setTextColor( cc.c4b(0, 255, 0, 255))
+    local backItem = cc.MenuItemLabel:create(label1)
     backItem:setPosition(self._centerPoint)
     local menu = cc.Menu:create(backItem)
     menu:setPosition(self._zeroPoint)
@@ -16,7 +21,6 @@ function ExampleScene:init()
         cc.Director:getInstance():popScene()
     end 
     ScriptHandlerMgr:getInstance():registerScriptHandler(backItem,backItemHandle,cc.Handler.MENU_CLICKED)
-    
     -- do something my init()
     return true
 end

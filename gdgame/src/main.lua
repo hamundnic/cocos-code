@@ -52,9 +52,10 @@ local function main()
 --    local GameScene = require("GameScene")
 --    local scene = GameScene.create()
 
-    local LoginScene = require("LoginScene")
-    local scene = LoginScene:create()
+    local Scene = require("LoginScene")
+--    local Scene = require("ExampleScene")
     
+    local scene = Scene:create()
 --    gameScene:playBgMusic()
     if cc.Director:getInstance():getRunningScene() then
         cc.Director:getInstance():replaceScene(scene)

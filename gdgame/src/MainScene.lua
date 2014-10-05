@@ -29,6 +29,8 @@ function MainScene:init()
     
     self:addChild(voidNode)
     
+    
+    
     local maskSprite = MaskSprite:create("main_bg_grass_left.jpg")
     maskSprite:setMask("main_bg_grass_left_alpha_mask","shader/mask.vsh","shader/mask.fsh")
     maskSprite:setAnchorPoint(0,0)
