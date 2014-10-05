@@ -29,7 +29,7 @@ function BagScene:init()
 end
 
 --static create object
-function BagScene.create()
+function BagScene:create()
     local scene = BagScene.new()
     if nil ~= scene then
         scene:init()

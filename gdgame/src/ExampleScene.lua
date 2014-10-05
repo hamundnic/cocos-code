@@ -22,7 +22,7 @@ function ExampleScene:init()
 end
 
 --static create object
-function ExampleScene.create()
+function ExampleScene:create()
     local scene = ExampleScene.new()
     if nil ~= scene then
         scene:init()

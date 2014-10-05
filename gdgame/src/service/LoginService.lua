@@ -1,5 +1,7 @@
 --create Class
-local LoginService = class("LoginService")
+local LoginService = class("LoginService", function ()
+    return require("service/Service"):create()
+end)
 local json = require("json");
 -- end create Class
 
@@ -11,7 +13,7 @@ function LoginService:init()
 end
 
 --static create object
-function LoginService.create()
+function LoginService:create()
     local service = LoginService:new()
     if nil ~= service then
         service:init()
@@ -21,6 +23,9 @@ end
 
 -- end static create object
 function LoginService:login(callback)
+    
+    self:test()
+    
     local request = function(url)
         gd.load()
         local xhr = cc.XMLHttpRequest:new()
@@ -40,19 +45,9 @@ function LoginService:login(callback)
         xhr:send()
     end
     
-    local requestLocal = function ()
-        local jsonstring = cc.FileUtils:getInstance():getStringFromFile("api/login.json")
-        cclog(jsonstring)
-        local entity = json.decode(jsonstring)
-        callback(entity)
-    end
-    
-    local url = "http://httpbin.org/get"
-    if gd.debug then
-        requestLocal(url)
-    else
-        request(url)
-    end
+    local url = "http://httpbin.org/get?api/login.json"
+    self:requestLocal(url, callback)
+--    request(url)
     
 end
 

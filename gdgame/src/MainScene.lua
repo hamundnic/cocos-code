@@ -54,7 +54,7 @@ function MainScene:init()
             cclog("origin：" .. entity.origin)
             local Scene = require("BattleScene")
 --            local Scene = require("ExampelScene")
-            local scene = Scene.create()
+            local scene = Scene:create()
             cc.Director:getInstance():pushScene(scene)
         end
         
@@ -66,7 +66,7 @@ function MainScene:init()
 end
 
 --static create object
-function MainScene.create()
+function MainScene:create()
     local scene = MainScene.new()
     if nil ~= scene then
         scene:init()
