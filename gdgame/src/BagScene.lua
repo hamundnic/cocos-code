@@ -15,7 +15,11 @@ function BagScene:init()
     bg:setScale(scale)
     layer:addChild(bg)
     
-    local backItem = cc.MenuItemImage:create("login_btn0.png","login_btn0_select.png")
+    local ttfConfig = {}
+    ttfConfig.fontFilePath = gd.ttfConfig.fontFilePath
+    ttfConfig.fontSize = 64
+    
+    local backItem = cc.MenuItemLabel:create(cc.Label:createWithTTF(ttfConfig,"back", cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width))
     backItem:setPosition(self._centerPoint)
     local menu = cc.Menu:create(backItem)
     menu:setPosition(self._zeroPoint)

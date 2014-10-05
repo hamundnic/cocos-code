@@ -7,26 +7,30 @@ end)
 -- overwrite
 function BattleScene:init()
     -- do samething my init()
+    local ttfConfig = {}
+    ttfConfig.fontFilePath = gd.ttfConfig.fontFilePath
+    ttfConfig.fontSize = gd.ttfConfig.fontSize
     
-    local item1 = cc.MenuItemImage:create("login_btn0.png","login_btn0_select.png")
-    item1:setPosition(100,100)
-    local item2 = cc.MenuItemImage:create("login_btn1.png","login_btn1_select.png")
-    item2:setPosition(100,500)
+    local nextItem = cc.MenuItemLabel:create(cc.Label:createWithTTF(ttfConfig,"next", cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width))
+    nextItem:setPosition(100,100)
     
-    local menu = cc.Menu:create(item1,item2)
+    local backItem = cc.MenuItemLabel:create(cc.Label:createWithTTF(ttfConfig,"back", cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width))
+    backItem:setPosition(100,500)
+    
+    local menu = cc.Menu:create(nextItem,backItem)
     menu:setPosition(0,0)
     self:addChild(menu)
 
-    local item1Handle = function ()
+    local nextItemHandle = function ()
         local BagScene = require("BagScene")
         local scene = BagScene:create()
         cc.Director:getInstance():pushScene(scene)
     end
-    local item2Handle = function ()
+    local backItemHandle = function ()
         cc.Director:getInstance():popScene()
     end 
-    ScriptHandlerMgr:getInstance():registerScriptHandler(item1,item1Handle,cc.Handler.MENU_CLICKED)
-    ScriptHandlerMgr:getInstance():registerScriptHandler(item2,item2Handle,cc.Handler.MENU_CLICKED)
+    ScriptHandlerMgr:getInstance():registerScriptHandler(nextItem,nextItemHandle,cc.Handler.MENU_CLICKED)
+    ScriptHandlerMgr:getInstance():registerScriptHandler(backItem,backItemHandle,cc.Handler.MENU_CLICKED)
     
     self:addChild(self:addSpineAnimation())
     return true
