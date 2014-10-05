@@ -1,6 +1,6 @@
 require "Cocos2d"
 gd = gd or {}
-gd.debug = true
+gd.debug = false
 
 function gd.load()
     gd.loadObject = cc.Sprite:create("res/UI/alpha/VGA/logo.jpg")

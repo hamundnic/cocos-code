@@ -1,17 +1,6 @@
 --create Class
 local LoginService = class("LoginService")
-LoginService.__index = LoginService
 local json = require("json");
-
-function LoginService.extend(target)
-    local t = tolua.getpeer(target)
-    if not t then
-        t = {}
-        tolua.setpeer(target, t)
-    end
-    setmetatable(t, LoginService)
-    return target
-end
 -- end create Class
 
 -- overwrite

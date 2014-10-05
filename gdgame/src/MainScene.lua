@@ -1,27 +1,14 @@
 --create Class
-local MainScene = class("MainScene")
-MainScene.__index = MainScene
-MainScene._widgets = {}
+local MainScene = class("MainScene", function ()
+    return cc.Scene:create()
+end)
 
 local LoginService = require("service/LoginService")
 local loginService = LoginService:create()
-
-function MainScene.extend(target)
-    local t = tolua.getpeer(target)
-    if not t then
-        t = {}
-        tolua.setpeer(target, t)
-    end
-    setmetatable(t, MainScene)
-    return target
-end
 -- end create Class
 
 -- overwrite
 function MainScene:init()
-    self._visibleSize = cc.Director:getInstance():getVisibleSize()
-    self._origin = cc.Director:getInstance():getVisibleOrigin()
-
     -- do samething my init()
     local bg1 = cc.Sprite:create("main_bg_sky_left.jpg")
     bg1:setScale(2.689)
@@ -80,11 +67,20 @@ end
 
 --static create object
 function MainScene.create()
-    local scene = MainScene.extend(cc.Scene:create())
+    local scene = MainScene.new()
     if nil ~= scene then
         scene:init()
     end
     return scene
+end
+
+function MainScene:ctor()
+    self._widgets = {}
+    self._visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
+    self._visibleSize = cc.Director:getInstance():getVisibleSize()
+    self._winSize = cc.Director:getInstance():getWinSize() 
+    self._centerPoint = cc.p(self._visibleOrigin.x + self._visibleSize.width * 0.5, self._visibleOrigin.y + self._visibleSize.height * 0.5)
+    self._zeroPoint = cc.p(0,0)
 end
 -- end static create object
 

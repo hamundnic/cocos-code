@@ -31,7 +31,7 @@ function ExampleScene.create()
 end
 
 function ExampleScene:ctor()
-    self._widget = {}
+    self._widgets = {}
     self._visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
     self._visibleSize = cc.Director:getInstance():getVisibleSize()
     self._winSize = cc.Director:getInstance():getWinSize() 

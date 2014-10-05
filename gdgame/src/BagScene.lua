@@ -38,7 +38,7 @@ function BagScene.create()
 end
 
 function BagScene:ctor()
-    self._widget = {}
+    self._widgets = {}
     self._visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
     self._visibleSize = cc.Director:getInstance():getVisibleSize()
     self._winSize = cc.Director:getInstance():getWinSize() 
