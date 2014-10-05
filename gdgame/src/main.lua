@@ -53,7 +53,7 @@ local function main()
 --    local scene = GameScene.create()
 
     local LoginScene = require("LoginScene")
-    local scene = LoginScene.create()
+    local scene = LoginScene:create()
     
 --    gameScene:playBgMusic()
     if cc.Director:getInstance():getRunningScene() then

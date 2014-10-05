@@ -28,7 +28,7 @@ function LoginScene:init()
     local btn0Handle = function ()
         cclog("bnt0 click")
         local MainScene = require("MainScene")
-        local mainScene = MainScene.create()
+        local mainScene = MainScene:create()
         cc.Director:getInstance():replaceScene(mainScene)
     end
     ScriptHandlerMgr:getInstance():registerScriptHandler(btn0,btn0Handle,cc.Handler.MENU_CLICKED)
@@ -38,7 +38,7 @@ function LoginScene:init()
 end
 
 --create object
-function LoginScene.create()
+function LoginScene:create()
     local scene = LoginScene.new()
     if nil ~= scene then
         scene:init()

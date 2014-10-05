@@ -28,13 +28,12 @@ function BattleScene:init()
     ScriptHandlerMgr:getInstance():registerScriptHandler(item1,item1Handle,cc.Handler.MENU_CLICKED)
     ScriptHandlerMgr:getInstance():registerScriptHandler(item2,item2Handle,cc.Handler.MENU_CLICKED)
     
-    
     self:addChild(self:addSpineAnimation())
     return true
 end
 
 --static create object
-function BattleScene.create()
+function BattleScene:create()
     local scene = BattleScene.new()
     if nil ~= scene then
         scene:init()

@@ -54,11 +54,11 @@ function MainScene:init()
             cclog("origin：" .. entity.origin)
             local Scene = require("BattleScene")
 --            local Scene = require("ExampelScene")
-            local scene = Scene.create()
+            local scene = Scene:create()
             cc.Director:getInstance():pushScene(scene)
         end
         
-        local loginEntity = loginService:login(loginCallback)
+        local loginEntity = loginService:login(loginCallback, 100)
     end
     ScriptHandlerMgr:getInstance():registerScriptHandler(item1,item1Handle,cc.Handler.MENU_CLICKED)
     self:setEnabled(true)
@@ -66,7 +66,7 @@ function MainScene:init()
 end
 
 --static create object
-function MainScene.create()
+function MainScene:create()
     local scene = MainScene.new()
     if nil ~= scene then
         scene:init()
