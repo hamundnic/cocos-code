@@ -18,6 +18,10 @@ function BattleScene:init(content)
     contentLabel:setPosition(500,320)
     self:addChild(contentLabel)
     
+    local labelGet  = cc.Label:createWithTTF("Test Get", gd.ttfConfig.fontFilePath, 22)
+    labelGet:setPosition(500,220)
+    self:addChild(labelGet)
+    
     local nextItem = cc.MenuItemLabel:create(cc.Label:createWithTTF(ttfConfig,"next", cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width))
     nextItem:setPosition(100,100)
     

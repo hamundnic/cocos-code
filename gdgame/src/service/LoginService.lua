@@ -26,7 +26,8 @@ function LoginService:login(callback, uid)
     local request = function(url)
         gd.load()
         local xhr = cc.XMLHttpRequest:new()
-        xhr.responseType = cc.XMLHTTPREQUEST_RESPONSE_STRING
+--        xhr.responseType = cc.XMLHTTPREQUEST_RESPONSE_STRING
+        xhr.responseType  = cc.XMLHTTPREQUEST_RESPONSE_JSON
         xhr:open("GET", url)
         local function onReadyStateChange()
             if xhr.status == 200 then
@@ -47,6 +48,7 @@ function LoginService:login(callback, uid)
     cclog(url)
 --    self:requestLocal(url, callback)
     request("http://httpbin.org/get")
+--    request("http://httpbin.org/getError")
 end
 
 return LoginService

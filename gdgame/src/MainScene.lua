@@ -26,10 +26,7 @@ function MainScene:init()
     
 --    local moveby = cc.MoveBy:create(2.0,cc.p(-300,0))
 --    voidNode:runAction(moveby)
-    
     self:addChild(voidNode)
-    
-    
     
     local maskSprite = MaskSprite:create("ui/main_bg_grass_left.jpg")
     maskSprite:setMask("ui/main_bg_grass_left_alpha_mask","shaders/mask.vsh","shaders/mask.fsh")
