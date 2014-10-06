@@ -7,17 +7,34 @@ end)
 -- overwrite
 function TestLocation:init()
     
-    local bg = cc.Sprite:create("ui/test_location_bg.jpg")
-    bg:setAnchorPoint(0.5,0.5)
-    bg:setPosition(self._centerPoint)
-    bg:setScale(self._winSize.height / bg:getContentSize().height) 
-    self:addChild(bg)    
+    local parent = cc.Sprite:create("ui/test_location_bg.jpg")
+    parent:setAnchorPoint(0.5,0.5)
+    parent:setPosition(self._centerPoint)
+    parent:setScale(self._winSize.height / parent:getContentSize().height) 
+    self:addChild(parent)   
+    
+--    local bg = cc.LayerColor:create(cc.c4b(0, 0, 0, 200), self._winSize.width, self._winSize.height)  
+--    bg:setPosition(self._zeroPoint)
+--    self:addChild(bg)
+    
+--    local bg = cc.Sprite:create("ui/bg.jpg")
+--    bg:setScale(self._winSize.height / bg:getContentSize().height)
+--    bg:setPosition(self._centerPoint)
+--    self:addChild(bg)
+
+
+--    local bg = gd.getLayerBg()
+    local bg = gd.getSceneBg()
+    self:addChild(bg)
+    
+    local frameLayer = cc.Sprite:create("ui/test_location_layer.jpg") 
+    frameLayer:setPosition(self._centerPoint)
+    self:addChild(frameLayer)
     
     local cell = cc.Sprite:create("ui/test_location_cell.jpg")
     cell:setAnchorPoint(self._zeroPoint)
-    cell:setPosition(self._zeroPoint)
-    cell:setOpacity(100)
-    self:addChild(cell)  
+    cell:setPosition(self._zeroPoint) 
+    frameLayer:addChild(cell)  
     
     -- do something my init()
     return true
