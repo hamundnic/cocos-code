@@ -18,7 +18,7 @@ function BattleScene:init(content)
     contentLabel:setPosition(500,320)
     self:addChild(contentLabel)
     
-    local labelGet  = cc.Label:createWithTTF("Test Get", gd.ttfConfig.fontFilePath, 22)
+    local labelGet  = cc.Label:createWithTTF("Test Label", gd.ttfConfig.fontFilePath, 22)
     labelGet:setPosition(500,220)
     self:addChild(labelGet)
     
