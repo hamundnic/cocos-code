@@ -75,7 +75,7 @@ function BattleScene:addSpineAnimation()
     local goblins_ffd
     local addGoblins = function()
         --please use sp.SkeletonAnimation:create,not sp.SkeletonAnimation:createWithFile
-        goblins_ffd = sp.SkeletonAnimation:create('avatars/goblins-ffd.json','avatars/goblins-ffd.atlas',0.6)
+        goblins_ffd = sp.SkeletonAnimation:create('skeletons/goblins-ffd.json','skeletons/goblins-ffd.atlas',0.6)
         goblin:addChild(goblins_ffd)
         goblins_ffd:setSkin("goblin")
         goblins_ffd:setPosition(cc.p(s.width/2, 20))
