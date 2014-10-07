@@ -1,18 +1,8 @@
 --create Class
-local LoginService = class("LoginService")
-LoginService.__index = LoginService
-
-function LoginService.extend(target)
-    local t = tolua.getpeer(target)
-    if not t then
-        t = {}
-        tolua.setpeer(target, t)
-    end
-    setmetatable(t, LoginService)
-    return target
-end
--- end create Class
-
+local LoginService = class("LoginService", function ()
+    return require("service/Service"):create()
+end)
+local json = require("json");
 -- overwrite
 function LoginService:init()
     -- do samething my init()
@@ -21,40 +11,44 @@ function LoginService:init()
 end
 
 --static create object
-function LoginService.create()
+function LoginService:create()
     local service = LoginService:new()
     if nil ~= service then
         service:init()
     end
     return service
 end
+
 -- end static create object
-function LoginService:login()
-    local getJsonstring = function()
+function LoginService:login(callback, uid)
     
---        s = cc.Sprite:create("logo.jpg")
---        s:setPosition(500,300)
---        cc.Director:getInstance():getRunningScene():addChild(s)
-    
+--    self:test()
+    local request = function(url)
+        gd.load()
         local xhr = cc.XMLHttpRequest:new()
-            xhr.responseType = cc.XMLHTTPREQUEST_RESPONSE_STRING
-            xhr:open("GET", "http://httpbin.org/get")
-
-            local function onReadyStateChange()
-                local statusString = "Http Status Code:"..xhr.statusText
---                s:removeFromParentAndCleanup()
-                print(xhr.response)
+--        xhr.responseType = cc.XMLHTTPREQUEST_RESPONSE_STRING
+        xhr.responseType  = cc.XMLHTTPREQUEST_RESPONSE_JSON
+        xhr:open("GET", url)
+        local function onReadyStateChange()
+            if xhr.status == 200 then
+                cclog(xhr.response)
+                local entity = json.decode(xhr.response)
+                callback(entity)
+            else
+                cclog("process error:" .. xhr.statusText)
             end
-            xhr:registerScriptHandler(onReadyStateChange)
-            xhr:send()
+            gd.unload()
+        end
+        xhr:registerScriptHandler(onReadyStateChange)
+        xhr:send()
     end
-
---    getJsonstring()
-    local jsonstring = "{\"a\":1}"
-    cclog("LoginService-test():" .. jsonstring)
-    local json = require("json");
-    local loginEntity = json.decode(jsonstring)
-    return loginEntity
+    
+    local param = {["uid"]=uid, ["name"]="hanson"}
+    local url = self:formatURLString("api/login.json",param)
+    cclog(url)
+--    self:requestLocal(url, callback)
+    request("http://httpbin.org/get")
+--    request("http://httpbin.org/getError")
 end
 
 return LoginService

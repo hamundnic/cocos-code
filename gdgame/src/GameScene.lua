@@ -18,20 +18,20 @@ function GameScene:ctor()
 end
 
 function GameScene:playBgMusic()
-    local bgMusicPath = cc.FileUtils:getInstance():fullPathForFilename("background.mp3") 
+    local bgMusicPath = cc.FileUtils:getInstance():fullPathForFilename("sounds/background.mp3") 
     cc.SimpleAudioEngine:getInstance():playMusic(bgMusicPath, true)
-    local effectPath = cc.FileUtils:getInstance():fullPathForFilename("effect1.wav")
+    local effectPath = cc.FileUtils:getInstance():fullPathForFilename("sounds/effect1.wav")
     cc.SimpleAudioEngine:getInstance():preloadEffect(effectPath)
 end
 
 -- create farm
 function GameScene:createLayer()
     local layer = cc.Layer:create()
-    local bg = cc.Sprite:create("bg_main_169.png")
+    local bg = cc.Sprite:create("ui/bg_main_169.png")
     bg:setPosition(self.origin.x + self.visibleSize.width * 0.5, self.origin.y + self.visibleSize.height * 0.5)
     layer:addChild(bg)
     
-    local btn = cc.Sprite:create("logo.jpg")
+    local btn = cc.Sprite:create("ui/logo.jpg")
     btn:setAnchorPoint(0,0)
 --    btn:setPosition(self.origin.x, self.origin.y) 
     btn:setPosition(0,0)
