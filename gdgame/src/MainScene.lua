@@ -10,31 +10,49 @@ local loginService = LoginService:create()
 -- overwrite
 function MainScene:init()
     -- do samething my init()
-    local bg1 = cc.Sprite:create("ui/main_bg_sky_left.jpg")
-    bg1:setScale(2.689)
-    bg1:setAnchorPoint(self._zeroPoint)
-    bg1:setPosition(0,0)
+    local skyLeft = cc.Sprite:create("ui/main_bg_sky_left.jpg")
+    skyLeft:setScale(self._winSize.height / skyLeft:getContentSize().height)
+    skyLeft:setAnchorPoint(self._zeroPoint)
+    skyLeft:setPosition(0,0)
+    
+    local skyRight = cc.Sprite:create("ui/main_bg_sky_right.jpg")
+    skyRight:setScale(self._winSize.height / skyRight:getContentSize().height)
+    skyRight:setAnchorPoint(self._zeroPoint)
+    skyRight:setPosition(0,0)
     
     local bg2 = cc.Sprite:create("ui/main_bg_mountain.png")
-    bg2:setScale(2.689)
+    local bg2 = MaskSprite:create("ui/main_bg_mountain.jpg")
+    bg2:setMask("ui/main_bg_mountain_alpha_mask",gd.maskVSH,gd.maskFSH)
+    bg2:setScale(self._winSize.height / bg2:getContentSize().height)
     bg2:setAnchorPoint(self._zeroPoint)
-    bg2:setPosition(0,0)
+    bg2:setPosition(self._zeroPoint)
     
     local bg3 = MaskSprite:create("ui/main_bg_grass_left.jpg")
-    bg3:setMask("ui/main_bg_grass_left_alpha_mask","shaders/mask.vsh","shaders/mask.fsh")
+    bg3:setMask("ui/main_bg_grass_left_alpha_mask",gd.maskVSH,gd.maskFSH)
     bg3:setAnchorPoint(self._zeroPoint)
-    bg3:setPosition(0,0)
+    bg3:setPosition(self._zeroPoint)
     
+    local bg4 = MaskSprite:create("ui/main_bg_grass_right.jpg")
+    bg4:setMask("ui/main_bg_grass_right_alpha_mask",gd.maskVSH,gd.maskFSH)
+    bg4:setAnchorPoint(self._zeroPoint)
+    bg4:setPosition(bg3:getContentSize().width,0)
     
     local  voidNode = cc.ParallaxNode:create()
     voidNode:setPosition(cc.p(0,0))
-    voidNode:addChild(bg1, -1, cc.p(0.4,0), cc.p(0,0))
-    voidNode:addChild(bg2, 1, cc.p(2.2,0), cc.p(0,0))
-    voidNode:addChild(bg3, 2, cc.p(3,0), cc.p(0,0))
+    voidNode:addChild(skyLeft, -1, cc.p(0.2,0), cc.p(0,0))
+    voidNode:addChild(skyRight, -1, cc.p(0.2,0), cc.p(skyLeft:getContentSize().width,0))
+    voidNode:addChild(bg2, 1, cc.p(0.8,0), cc.p(0,0))
+    voidNode:addChild(bg3, 2, cc.p(1,0), cc.p(0,0))
+    voidNode:addChild(bg4, 2, cc.p(1,0), cc.p(bg3:getContentSize().width,0))
     self:addChild(voidNode)
     
     --add menu
-    local item1 = cc.MenuItemImage:create("ui/main_menu_todolist_1.jpg","ui/main_menu_todolist_2.jpg")
+    local item1Sprite = MaskSprite:create("ui/main_menu_todolist_1.jpg")
+    item1Sprite:setMask("ui/main_menu_todolist_1_alpha_mask",gd.maskVSH,gd.maskFSH)
+    local item1SpriteSelect = MaskSprite:create("ui/main_menu_todolist_2.jpg")
+    item1SpriteSelect:setMask("ui/main_menu_todolist_2_alpha_mask",gd.maskVSH,gd.maskFSH)
+--    local item1 = cc.MenuItemImage:create("ui/main_menu_todolist_1.jpg","ui/main_menu_todolist_2.jpg")
+    local item1 = cc.MenuItemSprite:create(item1Sprite,item1SpriteSelect)
     item1:setPosition(100,100)
     local menu = cc.Menu:create(item1)
     menu:setPosition(0,0)
@@ -55,22 +73,23 @@ function MainScene:init()
     
     --layer touch handle
     local function onTouchBegan(touch, event)
-        cclog("sprite onTouchBegan..")
+--        cclog("sprite onTouchBegan..")
         return true
     end
 
     local function onTouchMoved(touch, event)
-        cclog("sprite onTouchMoved..")
+--        cclog("sprite onTouchMoved..")
         local target = event:getCurrentTarget()
         local posX,posY = target:getPosition()
         local delta = touch:getDelta()
-        if (posX + delta.x < 0) then
+--        (bg3:getContentSize().width + bg4:getContentSize().width)
+        if (posX + delta.x < 0 and posX + delta.x > -800) then
             target:setPosition(cc.p(posX + delta.x, posY + delta.y))
         end
     end
 
     local function onTouchEnded(touch, event)
-        cclog("sprite onTouchesEnded..")
+--        cclog("sprite onTouchesEnded..")
         local target = event:getCurrentTarget()
         local posX,posY = target:getPosition()
         if (posX > 0) then 
