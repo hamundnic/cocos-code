@@ -54,6 +54,7 @@ local function main()
 
     local Scene = require("LoginScene")
 --    local Scene = require("ExampleScene")
+--    local Scene = require("test/TestLocation")
     
     local scene = Scene:create()
 --    gameScene:playBgMusic()

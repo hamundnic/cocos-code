@@ -15,4 +15,23 @@ function gd.unload()
     cc.Director:getInstance():getRunningScene():setEnabled(true)
 end
 
+function gd.getSceneBg()
+    local visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
+    local visibleSize = cc.Director:getInstance():getVisibleSize()
+    local winSize = cc.Director:getInstance():getWinSize() 
+    local centerPoint = cc.p(visibleOrigin.x + visibleSize.width * 0.5, visibleOrigin.y + visibleSize.height * 0.5)
+
+    local bg = cc.Sprite:create("ui/bg.jpg")
+    bg:setScale(winSize.height / bg:getContentSize().height)
+    bg:setPosition(centerPoint)
+    return bg
+end
+
+function gd.getLayerBg()
+    local winSize = cc.Director:getInstance():getWinSize()
+    local bg = cc.LayerColor:create(cc.c4b(0, 0, 0, 200), winSize.width, winSize.height)  
+    bg:setPosition(0,0)
+    return bg
+end
+
 
