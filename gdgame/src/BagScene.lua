@@ -6,15 +6,10 @@ end)
 -- overwrite
 function BagScene:init()
     
-    local layer = cc.Layer:create()
-    self:addChild(layer)
     
---    local bg = cc.Sprite:create("ui/bg.jpg")
---    bg:setPosition(self._centerPoint) --设置中心点
---    local scale = cc.Director:getInstance():getWinSize().height / bg:getContentSize().height --缩放以height为准
---    bg:setScale(scale)
+    
     local bg = gd.getSceneBg()
-    layer:addChild(bg)
+    self:addChild(bg)
     
     local ttfConfig = {}
     ttfConfig.fontFilePath = gd.ttfConfig.fontFilePath
@@ -24,11 +19,14 @@ function BagScene:init()
     backItem:setPosition(self._centerPoint)
     local menu = cc.Menu:create(backItem)
     menu:setPosition(self._zeroPoint)
-    layer:addChild(menu)
+    self:addChild(menu)
     local backItemHandle = function ()
         cc.Director:getInstance():popScene()
     end 
     ScriptHandlerMgr:getInstance():registerScriptHandler(backItem,backItemHandle,cc.Handler.MENU_CLICKED)
+
+
+    gd.addMenuLayer(self)
 
     return true
 end

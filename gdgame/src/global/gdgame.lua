@@ -34,4 +34,10 @@ function gd.getLayerBg()
     return bg
 end
 
+function gd.addMenuLayer(parent)
+    local MenuLayer = require("global/MenuLayer")
+    local menuLayer = MenuLayer:create()
+    parent:addChild(menuLayer,999)
+end
+
 

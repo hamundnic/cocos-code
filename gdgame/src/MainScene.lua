@@ -103,6 +103,7 @@ function MainScene:init()
     local eventDispatcher = self:getEventDispatcher()
     eventDispatcher:addEventListenerWithSceneGraphPriority(listener1, voidNode)
     
+    gd.addMenuLayer(self)
     --touch enabled
     self:setEnabled(true)
     return true
