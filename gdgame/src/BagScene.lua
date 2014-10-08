@@ -9,10 +9,11 @@ function BagScene:init()
     local layer = cc.Layer:create()
     self:addChild(layer)
     
-    local bg = cc.Sprite:create("ui/bg.jpg")
-    bg:setPosition(self._centerPoint) --设置中心点
-    local scale = cc.Director:getInstance():getWinSize().height / bg:getContentSize().height --缩放以height为准
-    bg:setScale(scale)
+--    local bg = cc.Sprite:create("ui/bg.jpg")
+--    bg:setPosition(self._centerPoint) --设置中心点
+--    local scale = cc.Director:getInstance():getWinSize().height / bg:getContentSize().height --缩放以height为准
+--    bg:setScale(scale)
+    local bg = gd.getSceneBg()
     layer:addChild(bg)
     
     local ttfConfig = {}

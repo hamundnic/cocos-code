@@ -11,7 +11,7 @@ function TestLocation:init()
     parent:setAnchorPoint(0.5,0.5)
     parent:setPosition(self._centerPoint)
     parent:setScale(self._winSize.height / parent:getContentSize().height) 
-    self:addChild(parent)   
+    self:addChild(parent)
     
 --    local bg = cc.LayerColor:create(cc.c4b(0, 0, 0, 200), self._winSize.width, self._winSize.height)  
 --    bg:setPosition(self._zeroPoint)
