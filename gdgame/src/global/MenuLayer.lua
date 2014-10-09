@@ -33,17 +33,13 @@ function MenuLayer:init()
     ScriptHandlerMgr:getInstance():registerScriptHandler(switchItem,switchItemHandle,cc.Handler.MENU_CLICKED)
 
     local function onNodeEvent(event)
-        cclog("event:" .. event)
         if (event == "cleanup") then
             self._layer:release()
         end
     end
     self:registerScriptHandler(onNodeEvent)
-    
     return true
 end
-
-
 
 --static create object
 function MenuLayer:create()

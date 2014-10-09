@@ -40,4 +40,10 @@ function gd.addMenuLayer(parent)
     parent:addChild(menuLayer,999)
 end
 
+function gd.addCurrencyLayer(parent)
+    local CurrencyLayer = require("global/CurrencyLayer")
+    local currencyLayer = CurrencyLayer:create()
+    parent:addChild(currencyLayer,999)
+end
+
 

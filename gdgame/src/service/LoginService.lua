@@ -23,31 +23,31 @@ end
 function LoginService:login(callback, uid)
     
 --    self:test()
-    local request = function(url)
-        gd.load()
-        local xhr = cc.XMLHttpRequest:new()
+--    local request = function(url)
+--        gd.load()
+--        local xhr = cc.XMLHttpRequest:new()
 --        xhr.responseType = cc.XMLHTTPREQUEST_RESPONSE_STRING
-        xhr.responseType  = cc.XMLHTTPREQUEST_RESPONSE_JSON
-        xhr:open("GET", url)
-        local function onReadyStateChange()
-            if xhr.status == 200 then
-                cclog(xhr.response)
-                local entity = json.decode(xhr.response)
-                callback(entity)
-            else
-                cclog("process error:" .. xhr.statusText)
-            end
-            gd.unload()
-        end
-        xhr:registerScriptHandler(onReadyStateChange)
-        xhr:send()
-    end
+--        xhr.responseType  = cc.XMLHTTPREQUEST_RESPONSE_JSON
+--        xhr:open("GET", url)
+--        local function onReadyStateChange()
+--            if xhr.status == 200 then
+--                cclog(xhr.response)
+--                local entity = json.decode(xhr.response)
+--                callback(entity)
+--            else
+--                cclog("process error:" .. xhr.statusText)
+--            end
+--            gd.unload()
+--        end
+--        xhr:registerScriptHandler(onReadyStateChange)
+--        xhr:send()
+--    end
     
     local param = {["uid"]=uid, ["name"]="hanson"}
     local url = self:formatURLString("api/login.json",param)
     cclog(url)
---    self:requestLocal(url, callback)
-    request("http://httpbin.org/get")
+    self:requestLocal(url, callback)
+--    request("http://httpbin.org/get")
 --    request("http://httpbin.org/getError")
 end
 

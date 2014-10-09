@@ -11,7 +11,7 @@ function LoginScene:init()
     -- do samething my init()
     local layer = cc.Layer:create()
     local bg = cc.Sprite:create("ui/login_bg.jpg")
-    bg:setPosition(self._visibleOrigin.x + self._visibleSize.width * 0.5, self._visibleOrigin.y + self._visibleSize.height * 0.5)
+    bg:setPosition(self._centerPoint)
     layer:addChild(bg)
     --create button
     local btn0 = cc.MenuItemImage:create("ui/login_btn0.png","ui/login_btn0_select.png")
@@ -61,6 +61,4 @@ function LoginScene:setEnabled(enabled)
         widget:setEnabled(enabled)
     end
 end
-
-
 return LoginScene
