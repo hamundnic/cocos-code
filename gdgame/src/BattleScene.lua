@@ -16,11 +16,11 @@ function BattleScene:init(content)
     
     local contentLabel = cc.Label:createWithTTF(ttfConfig,content, cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width)
     contentLabel:setPosition(500,320)
-    self:addChild(contentLabel)
+    self:addChild(contentLabel,1)
     
     local labelGet  = cc.Label:createWithTTF("Test Label", gd.ttfConfig.fontFilePath, 22)
     labelGet:setPosition(500,220)
-    self:addChild(labelGet)
+    self:addChild(labelGet,1)
     
     local nextItem = cc.MenuItemLabel:create(cc.Label:createWithTTF(ttfConfig,"next", cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width))
     nextItem:setPosition(100,100)
@@ -30,7 +30,7 @@ function BattleScene:init(content)
     
     local menu = cc.Menu:create(nextItem,backItem)
     menu:setPosition(0,0)
-    self:addChild(menu)
+    self:addChild(menu,1)
 
     local nextItemHandle = function ()
         local BagScene = require("BagScene")
@@ -43,7 +43,7 @@ function BattleScene:init(content)
     ScriptHandlerMgr:getInstance():registerScriptHandler(nextItem,nextItemHandle,cc.Handler.MENU_CLICKED)
     ScriptHandlerMgr:getInstance():registerScriptHandler(backItem,backItemHandle,cc.Handler.MENU_CLICKED)
     
-    self:addChild(self:addSpineAnimation())
+    self:addChild(self:addSpineAnimation(),2)
     return true
 end
 
@@ -119,6 +119,12 @@ function BattleScene:addSpineAnimation()
     goblin:registerScriptHandler(onNodeEvent)
 
     return goblin
+end
+
+function BattleScene:setBackground(name)
+    local background = cc.Sprite:create(name)
+    background:setPosition(self._centerPoint.x,self._centerPoint.y)
+    self:addChild(background,0)
 end
 
 return BattleScene

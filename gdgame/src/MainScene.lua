@@ -64,6 +64,7 @@ function MainScene:init()
             cclog("origin：" .. entity.origin)
             local Scene = require("BattleScene")
             local scene = Scene:create(entity.origin)
+            scene:setBackground("battle_bg/bbg_arena.jpg")
             cc.Director:getInstance():pushScene(scene)
         end
         local loginEntity = loginService:login(loginCallback, 100)
