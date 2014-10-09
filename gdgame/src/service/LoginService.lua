@@ -21,12 +21,10 @@ end
 
 -- end static create object
 function LoginService:login(callback, uid)
-    
---    self:test()
     local request = function(url)
         gd.load()
         local xhr = cc.XMLHttpRequest:new()
---        xhr.responseType = cc.XMLHTTPREQUEST_RESPONSE_STRING
+        xhr.responseType = cc.XMLHTTPREQUEST_RESPONSE_STRING
         xhr.responseType  = cc.XMLHTTPREQUEST_RESPONSE_JSON
         xhr:open("GET", url)
         local function onReadyStateChange()

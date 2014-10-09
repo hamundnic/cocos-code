@@ -8,7 +8,6 @@ end)
 function BattleScene:init(content)
     
     cclog("content:" .. content)
-
     -- do samething my init()
     local ttfConfig = {}
     ttfConfig.fontFilePath = gd.ttfConfig.fontFilePath
@@ -108,6 +107,7 @@ function BattleScene:addSpineAnimation()
     end
 
     local function onNodeEvent(event)
+        cclog("event:" .. event)
         if event == "enter" then
             cclog("SpineTestLayer1#onEnter")
             addGoblins()

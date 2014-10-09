@@ -6,28 +6,33 @@ end)
 -- overwrite
 function BagScene:init()
     
-    local layer = cc.Layer:create()
-    self:addChild(layer)
+    local bg = gd.createSceneBg()
+    self:addChild(bg)
     
-    local bg = cc.Sprite:create("ui/bg.jpg")
-    bg:setPosition(self._centerPoint) --设置中心点
-    local scale = cc.Director:getInstance():getWinSize().height / bg:getContentSize().height --缩放以height为准
-    bg:setScale(scale)
-    layer:addChild(bg)
-    
-    local ttfConfig = {}
-    ttfConfig.fontFilePath = gd.ttfConfig.fontFilePath
-    ttfConfig.fontSize = 64
-    
-    local backItem = cc.MenuItemLabel:create(cc.Label:createWithTTF(ttfConfig,"back", cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width))
-    backItem:setPosition(self._centerPoint)
+--    local ttfConfig = {}
+--    ttfConfig.fontFilePath = gd.ttfConfig.fontFilePath
+--    ttfConfig.fontSize = 64
+--    local backItem = cc.MenuItemLabel:create(cc.Label:createWithTTF(ttfConfig,"back", cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width))
+
+
+    local backItem = cc.MenuItemImage:create("ui/global_backbtn.pvr.ccz","ui/global_backbtn_disabled.pvr.ccz","ui/global_backbtn_disabled.pvr.ccz")
+    backItem:setAnchorPoint(cc.p(0,1))
+    backItem:setPosition(cc.p(38,self._winSize.height))
     local menu = cc.Menu:create(backItem)
     menu:setPosition(self._zeroPoint)
-    layer:addChild(menu)
+    self:addChild(menu)
     local backItemHandle = function ()
         cc.Director:getInstance():popScene()
     end 
     ScriptHandlerMgr:getInstance():registerScriptHandler(backItem,backItemHandle,cc.Handler.MENU_CLICKED)
+
+    local test = cc.Sprite:create("ui/bag_test1.png")
+    test:setAnchorPoint(0.5,0)
+    test:setPosition(self._winSize.width * 0.5,20)
+    self:addChild(test)
+
+    gd.addMenuLayer(self)
+    gd.addCurrencyLayer(self)
 
     return true
 end

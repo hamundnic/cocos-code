@@ -9,6 +9,7 @@ local loginService = LoginService:create()
 
 -- overwrite
 function MainScene:init()
+    
     -- do samething my init()
     local skyLeft = cc.Sprite:create("ui/main_bg_sky_left.jpg")
     skyLeft:setScale(self._winSize.height / skyLeft:getContentSize().height)
@@ -51,13 +52,11 @@ function MainScene:init()
     item1Sprite:setMask("ui/main_menu_todolist_1_alpha_mask",gd.maskVSH,gd.maskFSH)
     local item1SpriteSelect = MaskSprite:create("ui/main_menu_todolist_2.jpg")
     item1SpriteSelect:setMask("ui/main_menu_todolist_2_alpha_mask",gd.maskVSH,gd.maskFSH)
---    local item1 = cc.MenuItemImage:create("ui/main_menu_todolist_1.jpg","ui/main_menu_todolist_2.jpg")
     local item1 = cc.MenuItemSprite:create(item1Sprite,item1SpriteSelect)
     item1:setPosition(100,100)
     local menu = cc.Menu:create(item1)
     menu:setPosition(0,0)
     bg3:addChild(menu)
-    table.insert(self._widgets,menu)
     local item1Handle = function ()
         local loginCallback = function (entity)
             --update ui
@@ -103,9 +102,9 @@ function MainScene:init()
     listener1:registerScriptHandler(onTouchEnded,cc.Handler.EVENT_TOUCH_ENDED )
     local eventDispatcher = self:getEventDispatcher()
     eventDispatcher:addEventListenerWithSceneGraphPriority(listener1, voidNode)
+    gd.addMenuLayer(self)
     
     --touch enabled
-    self:setEnabled(true)
     return true
 end
 
@@ -119,7 +118,6 @@ function MainScene:create()
 end
 
 function MainScene:ctor()
-    self._widgets = {}
     self._visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
     self._visibleSize = cc.Director:getInstance():getVisibleSize()
     self._winSize = cc.Director:getInstance():getWinSize() 
@@ -127,11 +125,5 @@ function MainScene:ctor()
     self._zeroPoint = cc.p(0,0)
 end
 -- end static create object
-
-function MainScene:setEnabled(enabled)
-    for _, widget in pairs(self._widgets) do
-    	widget:setEnabled(enabled)
-    end
-end
 
 return MainScene
