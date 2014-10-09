@@ -32,8 +32,11 @@ function LoginScene:init()
         cc.Director:getInstance():replaceScene(mainScene)
     end
     ScriptHandlerMgr:getInstance():registerScriptHandler(btn0,btn0Handle,cc.Handler.MENU_CLICKED)
-    
     self:addChild(layer)
+    
+    local bgLayer = gd.createLayerBg(true,true)
+    self:addChild(bgLayer)
+    
     return true
 end
 

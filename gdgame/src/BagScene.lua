@@ -6,7 +6,7 @@ end)
 -- overwrite
 function BagScene:init()
     
-    local bg = gd.getSceneBg()
+    local bg = gd.createSceneBg()
     self:addChild(bg)
     
 --    local ttfConfig = {}

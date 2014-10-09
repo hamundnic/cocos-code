@@ -6,10 +6,23 @@ end)
 
 -- overwrite
 function MenuLayer:init()
-    -- do something my init()
-    self._switchStatus = false --开关状态
     --init layer
-    self._layer = cc.LayerColor:create(cc.c4b(0, 0, 0, 100), self._winSize.width, self._winSize.height)
+    self._switchStatus = false --开关状态
+    --阻断touch
+    self._layer = cc.LayerColor:create(cc.c4b(0, 0, 0, 100))
+    local listenerSwallow = cc.EventListenerTouchOneByOne:create()
+    listenerSwallow:setSwallowTouches(true)
+    local onTouchBeganHandle = function()
+        return true
+    end
+    local onTouchEndedHandle = function()
+        self._switchStatus = false
+        self._layer:removeFromParent()
+    end
+    listenerSwallow:registerScriptHandler(onTouchBeganHandle,cc.Handler.EVENT_TOUCH_BEGAN )
+    listenerSwallow:registerScriptHandler(onTouchEndedHandle,cc.Handler.EVENT_TOUCH_ENDED )
+    self:getEventDispatcher():addEventListenerWithSceneGraphPriority(listenerSwallow, self._layer)
+    
     self._layer:_setLocalZOrder(-1)
     self._layer:retain()
     
@@ -51,7 +64,6 @@ function MenuLayer:create()
 end
 
 function MenuLayer:ctor()
-    self._widgets = {}
     self._visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
     self._visibleSize = cc.Director:getInstance():getVisibleSize()
     self._winSize = cc.Director:getInstance():getWinSize() 
@@ -59,12 +71,5 @@ function MenuLayer:ctor()
     self._zeroPoint = cc.p(0,0)
 end
 -- end static create object
-
---set Scene which is Touched
-function MenuLayer:setEnabled(enabled)
-    for _, widget in pairs(self._widgets) do
-        widget:setEnabled(enabled)
-    end
-end
 
 return MenuLayer

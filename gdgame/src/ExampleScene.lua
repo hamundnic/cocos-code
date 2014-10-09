@@ -20,7 +20,6 @@ function ExampleScene:create()
 end
 
 function ExampleScene:ctor()
-    self._widgets = {}
     self._visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
     self._visibleSize = cc.Director:getInstance():getVisibleSize()
     self._winSize = cc.Director:getInstance():getWinSize() 
@@ -28,13 +27,5 @@ function ExampleScene:ctor()
     self._zeroPoint = cc.p(0,0)
 end
 -- end static create object
-
---set Scene which is Touched
-function ExampleScene:setEnabled(enabled)
-    for _, widget in pairs(self._widgets) do
-        widget:setEnabled(enabled)
-    end
-end
-
 
 return ExampleScene
