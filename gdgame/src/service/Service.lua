@@ -23,7 +23,12 @@ function Service:test()
 end
 
 function Service:requestLocal(url, callback)
-    local jsonstring = cc.FileUtils:getInstance():getStringFromFile("api/login.json")
+
+    local a, b = string.find(url,"api")
+    local c, d = string.find(url,".json")
+    
+    local filename = string.sub(url,a,d)
+    local jsonstring = cc.FileUtils:getInstance():getStringFromFile(filename)
     cclog(jsonstring)
     local entity = json.decode(jsonstring)
     callback(entity)

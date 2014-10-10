@@ -1,29 +1,34 @@
 --create Class
-local BagScene = class("BagScene", function ()
+local DuplicationScene = class("DuplicationScene", function ()
     return cc.Scene:create()
 end)
 
 -- overwrite
-function BagScene:init()
-    
+function DuplicationScene:init()
+
     local bg = gd.createSceneBg()
     self:addChild(bg)
-
+    
     local backItem = cc.MenuItemImage:create("ui/global_backbtn.pvr.ccz","ui/global_backbtn_disabled.pvr.ccz","ui/global_backbtn_disabled.pvr.ccz")
     backItem:setAnchorPoint(cc.p(0,1))
     backItem:setPosition(cc.p(0,self._winSize.height))
-    local menu = cc.Menu:create(backItem)
+    
+    local nextItem = cc.MenuItemLabel:create(cc.Label:createWithTTF("next","fonts/Marker Felt.ttf",32))
+    nextItem:setPosition(300,300)
+    
+    local menu = cc.Menu:create(backItem, nextItem)
     menu:setPosition(self._zeroPoint)
     self:addChild(menu)
     local backItemHandle = function ()
         cc.Director:getInstance():popScene()
+    end
+    local nextItemHandle = function ()
+        cclog("nextItemHandle")
+        local layer = require("DuplicationSecondaryLayer"):create()
+        self:addChild(layer)
     end 
     ScriptHandlerMgr:getInstance():registerScriptHandler(backItem,backItemHandle,cc.Handler.MENU_CLICKED)
-
-    local test = cc.Sprite:create("ui/bag_test1.png")
-    test:setAnchorPoint(0.5,0)
-    test:setPosition(self._winSize.width * 0.5,20)
-    self:addChild(test)
+    ScriptHandlerMgr:getInstance():registerScriptHandler(nextItem,nextItemHandle,cc.Handler.MENU_CLICKED)
 
     gd.addMenuLayer(self)
     gd.addCurrencyLayer(self)
@@ -32,15 +37,15 @@ function BagScene:init()
 end
 
 --static create object
-function BagScene:create()
-    local scene = BagScene.new()
+function DuplicationScene:create()
+    local scene = DuplicationScene.new()
     if nil ~= scene then
         scene:init()
     end
     return scene
 end
 
-function BagScene:ctor()
+function DuplicationScene:ctor()
     self._visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
     self._visibleSize = cc.Director:getInstance():getVisibleSize()
     self._winSize = cc.Director:getInstance():getWinSize() 
@@ -48,4 +53,4 @@ function BagScene:ctor()
     self._zeroPoint = cc.p(0,0) 
 end
 
-return BagScene
+return DuplicationScene
