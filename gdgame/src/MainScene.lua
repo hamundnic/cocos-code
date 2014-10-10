@@ -3,8 +3,10 @@ local MainScene = class("MainScene", function ()
     return cc.Scene:create()
 end)
 
-local LoginService = require("service/LoginService")
-local loginService = LoginService:create()
+local loginService = require("service/LoginService"):create()
+local bagService = require("service/BagService"):create()
+local duplicationService = require("service/DuplicationService"):create()
+local bodyService = require("service/BodyService"):create()
 -- end create Class
 
 -- overwrite
@@ -48,26 +50,50 @@ function MainScene:init()
     self:addChild(voidNode)
     
     --add menu
-    local item1Sprite = MaskSprite:create("ui/main_menu_todolist_1.jpg")
-    item1Sprite:setMask("ui/main_menu_todolist_1_alpha_mask",gd.maskVSH,gd.maskFSH)
-    local item1SpriteSelect = MaskSprite:create("ui/main_menu_todolist_2.jpg")
-    item1SpriteSelect:setMask("ui/main_menu_todolist_2_alpha_mask",gd.maskVSH,gd.maskFSH)
-    local item1 = cc.MenuItemSprite:create(item1Sprite,item1SpriteSelect)
+--    local item1Sprite = MaskSprite:create("ui/main_menu_todolist_1.jpg")
+--    item1Sprite:setMask("ui/main_menu_todolist_1_alpha_mask",gd.maskVSH,gd.maskFSH)
+--    local item1SpriteSelect = MaskSprite:create("ui/main_menu_todolist_2.jpg")
+--    item1SpriteSelect:setMask("ui/main_menu_todolist_2_alpha_mask",gd.maskVSH,gd.maskFSH)
+    
+    local item1 = cc.MenuItemLabel:create(cc.Label:createWithTTF("duplication","fonts/Marker Felt.ttf",32))
     item1:setPosition(100,100)
-    local menu = cc.Menu:create(item1)
+    local item2 = cc.MenuItemLabel:create(cc.Label:createWithTTF("body","fonts/Marker Felt.ttf",32))
+    item2:setPosition(100,200)
+    local item3 = cc.MenuItemLabel:create(cc.Label:createWithTTF("bag","fonts/Marker Felt.ttf",32))
+    item3:setPosition(100,300)
+    local menu = cc.Menu:create(item1,item2,item3)
     menu:setPosition(0,0)
     bg3:addChild(menu)
     local item1Handle = function ()
-        local loginCallback = function (entity)
+        local callback = function (entity)
             --update ui
             cclog("origin：" .. entity.origin)
-            local Scene = require("BattleScene")
-            local scene = Scene:create(entity.origin)
+            local scene = require("DuplicationScene"):create(entity.origin)
             cc.Director:getInstance():pushScene(scene)
         end
-        local loginEntity = loginService:login(loginCallback, 100)
+        duplicationService:acceptDuplicationData(callback, 100)
+    end
+    local item2Handle = function ()
+        local callback = function (entity)
+            --update ui
+            cclog("origin：" .. entity.origin)
+            local scene = require("BodyScene"):create(entity.origin)
+            cc.Director:getInstance():pushScene(scene)
+        end
+        bodyService:acceptBodyData(callback, 100)
+    end
+    local item3Handle = function ()
+        local callback = function (entity)
+            --update ui
+            cclog("origin：" .. entity.origin)
+            local scene = require("BagScene"):create(entity.origin)
+            cc.Director:getInstance():pushScene(scene)
+        end
+        bagService:acceptBagData(callback, 100)
     end
     ScriptHandlerMgr:getInstance():registerScriptHandler(item1,item1Handle,cc.Handler.MENU_CLICKED)
+    ScriptHandlerMgr:getInstance():registerScriptHandler(item2,item2Handle,cc.Handler.MENU_CLICKED)
+    ScriptHandlerMgr:getInstance():registerScriptHandler(item3,item3Handle,cc.Handler.MENU_CLICKED)
     
     
     --layer touch handle

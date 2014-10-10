@@ -1,11 +1,11 @@
 --create Class
-local BagScene = class("BagScene", function ()
+local BodyScene = class("BodyScene", function ()
     return cc.Scene:create()
 end)
 
 -- overwrite
-function BagScene:init()
-    
+function BodyScene:init()
+
     local bg = gd.createSceneBg()
     self:addChild(bg)
 
@@ -20,11 +20,6 @@ function BagScene:init()
     end 
     ScriptHandlerMgr:getInstance():registerScriptHandler(backItem,backItemHandle,cc.Handler.MENU_CLICKED)
 
-    local test = cc.Sprite:create("ui/bag_test1.png")
-    test:setAnchorPoint(0.5,0)
-    test:setPosition(self._winSize.width * 0.5,20)
-    self:addChild(test)
-
     gd.addMenuLayer(self)
     gd.addCurrencyLayer(self)
 
@@ -32,15 +27,15 @@ function BagScene:init()
 end
 
 --static create object
-function BagScene:create()
-    local scene = BagScene.new()
+function BodyScene:create()
+    local scene = BodyScene.new()
     if nil ~= scene then
         scene:init()
     end
     return scene
 end
 
-function BagScene:ctor()
+function BodyScene:ctor()
     self._visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
     self._visibleSize = cc.Director:getInstance():getVisibleSize()
     self._winSize = cc.Director:getInstance():getWinSize() 
@@ -48,4 +43,4 @@ function BagScene:ctor()
     self._zeroPoint = cc.p(0,0) 
 end
 
-return BagScene
+return BodyScene

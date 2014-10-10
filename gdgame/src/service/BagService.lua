@@ -1,18 +1,18 @@
 --create Class
-local LoginService = class("LoginService", function ()
+local BagService = class("BagService", function ()
     return require("service/Service"):create()
 end)
 local json = require("json");
 -- overwrite
-function LoginService:init()
+function BagService:init()
     -- do samething my init()
-    cclog("LoginService:init")
+    cclog("BagService:init")
     return true
 end
 
 --static create object
-function LoginService:create()
-    local service = LoginService:new()
+function BagService:create()
+    local service = BagService:new()
     if nil ~= service then
         service:init()
     end
@@ -20,7 +20,7 @@ function LoginService:create()
 end
 
 -- end static create object
-function LoginService:login(callback, uid)
+function BagService:acceptBagData(callback, uid)
     local request = function(url)
         gd.load()
         local xhr = cc.XMLHttpRequest:new()
@@ -40,13 +40,13 @@ function LoginService:login(callback, uid)
         xhr:registerScriptHandler(onReadyStateChange)
         xhr:send()
     end
-    
+
     local param = {["uid"]=uid, ["name"]="hanson"}
-    local url = self:formatURLString("api/login.json",param)
+    local url = self:formatURLString("api/bag.json",param)
     cclog(url)
     self:requestLocal(url, callback)
---    request("http://httpbin.org/get")
---    request("http://httpbin.org/getError")
+    --    request("http://httpbin.org/get")
+    --    request("http://httpbin.org/getError")
 end
 
-return LoginService
+return BagService
