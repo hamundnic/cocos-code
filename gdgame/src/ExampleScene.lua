@@ -1,33 +1,31 @@
 --create Class
-local ExampleScene = class("ExampleScene")
-ExampleScene.__index = ExampleScene
-
-function ExampleScene.extend(target)
-    local t = tolua.getpeer(target)
-    if not t then
-        t = {}
-        tolua.setpeer(target, t)
-    end
-    setmetatable(t, ExampleScene)
-    return target
-end
+local ExampleScene = class("ExampleScene",function ()
+    return cc.Scene:create()
+end)
 -- end create Class
 
 -- overwrite
 function ExampleScene:init()
-    -- do samething my init()
+    -- do something my init()
     return true
 end
 
 --static create object
-function ExampleScene.create()
-    local scene = ExampleScene.extend(cc.Scene:create())
+function ExampleScene:create()
+    local scene = ExampleScene.new()
     if nil ~= scene then
         scene:init()
     end
     return scene
 end
--- end static create object
 
+function ExampleScene:ctor()
+    self._visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
+    self._visibleSize = cc.Director:getInstance():getVisibleSize()
+    self._winSize = cc.Director:getInstance():getWinSize() 
+    self._centerPoint = cc.p(self._visibleOrigin.x + self._visibleSize.width * 0.5, self._visibleOrigin.y + self._visibleSize.height * 0.5)
+    self._zeroPoint = cc.p(0,0)
+end
+-- end static create object
 
 return ExampleScene

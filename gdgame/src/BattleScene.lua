@@ -1,49 +1,72 @@
 --create Class
-local BattleScene = class("BattleScene")
-BattleScene.__index = BattleScene
-
-function BattleScene.extend(target)
-    local t = tolua.getpeer(target)
-    if not t then
-        t = {}
-        tolua.setpeer(target, t)
-    end
-    setmetatable(t, BattleScene)
-    return target
-end
+local BattleScene = class("BattleScene", function ()
+    return cc.Scene:create()
+end)
 -- end create Class
 
 -- overwrite
-function BattleScene:init()
-    -- do samething my init()
+function BattleScene:init(content)
     
-    local item1 = cc.MenuItemImage:create("main_menu_todolist_1.jpg","main_menu_todolist_2.jpg")
-    item1:setPosition(100,100)
-    local menu = cc.Menu:create(item1)
+    cclog("content:" .. content)
+    -- do samething my init()
+    local ttfConfig = {}
+    ttfConfig.fontFilePath = gd.ttfConfig.fontFilePath
+    ttfConfig.fontSize = gd.ttfConfig.fontSize
+    
+    local contentLabel = cc.Label:createWithTTF(ttfConfig,content, cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width)
+    contentLabel:setPosition(500,320)
+    self:addChild(contentLabel)
+    
+    local labelGet  = cc.Label:createWithTTF("Test Label", gd.ttfConfig.fontFilePath, 22)
+    labelGet:setPosition(500,220)
+    self:addChild(labelGet)
+    
+    local nextItem = cc.MenuItemLabel:create(cc.Label:createWithTTF(ttfConfig,"next", cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width))
+    nextItem:setPosition(100,100)
+    
+    local backItem = cc.MenuItemLabel:create(cc.Label:createWithTTF(ttfConfig,"back", cc.VERTICAL_TEXT_ALIGNMENT_CENTER, self._winSize.width))
+    backItem:setPosition(100,500)
+    
+    local menu = cc.Menu:create(nextItem,backItem)
     menu:setPosition(0,0)
     self:addChild(menu)
 
-    local item1Handle = function ()
-        cc.Director:getInstance():popScene()
+    local nextItemHandle = function ()
+        local BagScene = require("BagScene")
+        local scene = BagScene:create()
+        cc.Director:getInstance():pushScene(scene)
     end
-    ScriptHandlerMgr:getInstance():registerScriptHandler(item1,item1Handle,cc.Handler.MENU_CLICKED)
+    local backItemHandle = function ()
+        cc.Director:getInstance():popScene()
+    end 
+    ScriptHandlerMgr:getInstance():registerScriptHandler(nextItem,nextItemHandle,cc.Handler.MENU_CLICKED)
+    ScriptHandlerMgr:getInstance():registerScriptHandler(backItem,backItemHandle,cc.Handler.MENU_CLICKED)
     
     self:addChild(self:addSpineAnimation())
-    
-    
     return true
 end
 
 --static create object
-function BattleScene.create()
-    local scene = BattleScene.extend(cc.Scene:create())
+function BattleScene:create(content)
+    local scene = BattleScene.new()
     if nil ~= scene then
-        scene:init()
+        scene:init(content)
     end
     return scene
 end
 -- end static create object
 
+function BattleScene:ctor()
+    self._widgets = {}
+    self._visibleOrigin = cc.Director:getInstance():getVisibleOrigin()
+    self._visibleSize = cc.Director:getInstance():getVisibleSize()
+    self._winSize = cc.Director:getInstance():getWinSize() 
+    self._centerPoint = cc.p(self._visibleOrigin.x + self._visibleSize.width * 0.5, self._visibleOrigin.y + self._visibleSize.height * 0.5)
+    self._zeroPoint = cc.p(0,0)
+end
+
+
+--logic
 function BattleScene:addSpineAnimation()
     local goblin = cc.Layer:create()
     local s = cc.Director:getInstance():getWinSize()
@@ -51,7 +74,7 @@ function BattleScene:addSpineAnimation()
     local goblins_ffd
     local addGoblins = function()
         --please use sp.SkeletonAnimation:create,not sp.SkeletonAnimation:createWithFile
-        goblins_ffd = sp.SkeletonAnimation:create('goblins-ffd.json','goblins-ffd.atlas',0.6)
+        goblins_ffd = sp.SkeletonAnimation:create('skeletons/goblins-ffd.json','skeletons/goblins-ffd.atlas',0.6)
         goblin:addChild(goblins_ffd)
         goblins_ffd:setSkin("goblin")
         goblins_ffd:setPosition(cc.p(s.width/2, 20))
@@ -84,6 +107,7 @@ function BattleScene:addSpineAnimation()
     end
 
     local function onNodeEvent(event)
+        cclog("event:" .. event)
         if event == "enter" then
             cclog("SpineTestLayer1#onEnter")
             addGoblins()

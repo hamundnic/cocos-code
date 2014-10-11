@@ -1,4 +1,5 @@
 require "Cocos2d"
+require "src/global/gdgameConstants"
 require "src/global/gdgame"
 --require("src/gdgame")
 -- cclog
@@ -43,17 +44,19 @@ local function main()
     
     cc.FileUtils:getInstance():addSearchPath("src")
     cc.FileUtils:getInstance():addSearchPath("res")
-    cc.FileUtils:getInstance():addSearchPath("res/UI/alpha/VGA")
-    cc.FileUtils:getInstance():addSearchPath("res/sound") 
-    cc.FileUtils:getInstance():addSearchPath("res/avatars") 
+--    cc.FileUtils:getInstance():addSearchPath("res/UI/alpha/VGA")
+--    cc.FileUtils:getInstance():addSearchPath("res/sound") 
+--    cc.FileUtils:getInstance():addSearchPath("res/avatars") 
     
     --create scene 
 --    local GameScene = require("GameScene")
 --    local scene = GameScene.create()
 
-    local LoginScene = require("LoginScene")
-    local scene = LoginScene.create()
+    local Scene = require("LoginScene")
+--    local Scene = require("ExampleScene")
+--    local Scene = require("test/TestLocation")
     
+    local scene = Scene:create()
 --    gameScene:playBgMusic()
     if cc.Director:getInstance():getRunningScene() then
         cc.Director:getInstance():replaceScene(scene)
