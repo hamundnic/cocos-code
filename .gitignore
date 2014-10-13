@@ -51,4 +51,5 @@ gdgame/frameworks/cocos2d-x/cocos/scripting/lua-bindings/proj.ios_mac/build
 gdgame/frameworks/runtime-src/proj.ios_mac/build
 samsung-gt_n7100-4df192d45b3c9f95.json
 htc-htc_desire-SH146PL06771.json
-
+*.pyc
+CocosLuaBinding/frameworks/cocos2d-x/tools/tolua/userconf.ini
