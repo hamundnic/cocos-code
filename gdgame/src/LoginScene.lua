@@ -37,6 +37,10 @@ function LoginScene:init()
     local bgLayer = gd.createLayerBg(true,true)
     self:addChild(bgLayer)
     
+    local customClass = CustomClass:create()
+    local msg = customClass:helloMsg()
+    cclog("customClass's msg is : " .. msg)
+    
     return true
 end
 

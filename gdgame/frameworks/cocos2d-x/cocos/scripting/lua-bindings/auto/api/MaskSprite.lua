@@ -19,4 +19,8 @@
 -- @param #char char
 -- @return MaskSprite#MaskSprite ret (retunr value: MaskSprite)
 
+--------------------------------
+-- @function [parent=#MaskSprite] testBindingIsOK 
+-- @param self
+        
 return nil

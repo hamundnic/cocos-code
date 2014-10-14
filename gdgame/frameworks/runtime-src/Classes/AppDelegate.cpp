@@ -5,6 +5,7 @@
 #include "Runtime.h"
 #include "ConfigParser.h"
 #include "lua_cocos2dx_masksprite.hpp"
+#include "lua_cocos2dx_custom_auto.hpp"
 
 using namespace CocosDenshion;
 
@@ -60,6 +61,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	auto state = stack->getLuaState();
 	lua_getglobal(state, "_G");
 	register_all_cocos2dx_masksprite(state);
+    register_all_cocos2dx_custom(state);
 	lua_pop(state, 1);
 	
     //register custom function

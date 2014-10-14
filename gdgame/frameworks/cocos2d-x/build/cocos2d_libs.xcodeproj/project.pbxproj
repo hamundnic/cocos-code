@@ -1739,6 +1739,10 @@
 		B6B26344193884D60088FE25 /* CCAnimation3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6B26341193884D60088FE25 /* CCAnimation3D.cpp */; };
 		B6B26345193884D60088FE25 /* CCAnimation3D.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B26342193884D60088FE25 /* CCAnimation3D.h */; };
 		B6B26346193884D60088FE25 /* CCAnimation3D.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B26342193884D60088FE25 /* CCAnimation3D.h */; };
+		C0A8687119ED4FEB00835415 /* CustomClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A8686F19ED4FEB00835415 /* CustomClass.cpp */; };
+		C0A8687219ED4FEB00835415 /* CustomClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A8686F19ED4FEB00835415 /* CustomClass.cpp */; };
+		C0A8687319ED4FEB00835415 /* CustomClass.h in Headers */ = {isa = PBXBuildFile; fileRef = C0A8687019ED4FEB00835415 /* CustomClass.h */; };
+		C0A8687419ED4FEB00835415 /* CustomClass.h in Headers */ = {isa = PBXBuildFile; fileRef = C0A8687019ED4FEB00835415 /* CustomClass.h */; };
 		CDEAFB6319DBF1F00090E93F /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDEAFB1B19DBF1F00090E93F /* Animation.cpp */; };
 		CDEAFB6419DBF1F00090E93F /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDEAFB1B19DBF1F00090E93F /* Animation.cpp */; };
 		CDEAFB6519DBF1F00090E93F /* Animation.h in Headers */ = {isa = PBXBuildFile; fileRef = CDEAFB1C19DBF1F00090E93F /* Animation.h */; };
@@ -2891,6 +2895,8 @@
 		B6B2633C19381FBF0088FE25 /* CCAnimationCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAnimationCurve.h; sourceTree = "<group>"; };
 		B6B26341193884D60088FE25 /* CCAnimation3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAnimation3D.cpp; sourceTree = "<group>"; };
 		B6B26342193884D60088FE25 /* CCAnimation3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAnimation3D.h; sourceTree = "<group>"; };
+		C0A8686F19ED4FEB00835415 /* CustomClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CustomClass.cpp; sourceTree = "<group>"; };
+		C0A8687019ED4FEB00835415 /* CustomClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomClass.h; sourceTree = "<group>"; };
 		CDEAFB1A19DBF1F00090E93F /* Android.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Android.mk; sourceTree = "<group>"; };
 		CDEAFB1B19DBF1F00090E93F /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
 		CDEAFB1C19DBF1F00090E93F /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
@@ -3081,6 +3087,7 @@
 		1551A334158F2AB200E66CFE = {
 			isa = PBXGroup;
 			children = (
+				C0A8686D19ED4FEB00835415 /* custom */,
 				46A15FCC1807A544005B8026 /* AUTHORS */,
 				1A57FFF7180BC5160088DEC7 /* CHANGELOG */,
 				50272539190BF1B900AAF4ED /* cocos2d.cpp */,
@@ -4977,6 +4984,16 @@
 			path = ../cocos/3d;
 			sourceTree = "<group>";
 		};
+		C0A8686D19ED4FEB00835415 /* custom */ = {
+			isa = PBXGroup;
+			children = (
+				C0A8686F19ED4FEB00835415 /* CustomClass.cpp */,
+				C0A8687019ED4FEB00835415 /* CustomClass.h */,
+			);
+			name = custom;
+			path = ../cocos/custom;
+			sourceTree = "<group>";
+		};
 		CDEAFB1919DBF1F00090E93F /* spine */ = {
 			isa = PBXGroup;
 			children = (
@@ -5284,6 +5301,7 @@
 				1A57035A180BD0B00088DEC7 /* unzip.h in Headers */,
 				1AD71DAB180E26E600808F54 /* CCBAnimationManager.h in Headers */,
 				50ABBDBF1925AB4100A911A9 /* CCTextureCache.h in Headers */,
+				C0A8687319ED4FEB00835415 /* CustomClass.h in Headers */,
 				1AD71DAF180E26E600808F54 /* CCBFileLoader.h in Headers */,
 				CDEAFB9519DBF1F00090E93F /* extension.h in Headers */,
 				B37510741823AC9F00B3BA6A /* CCPhysicsContactInfo_chipmunk.h in Headers */,
@@ -5936,6 +5954,7 @@
 				1A8C59D2180E930E00EF57C3 /* CCDatas.h in Headers */,
 				50ABBDC01925AB4100A911A9 /* CCTextureCache.h in Headers */,
 				CDEAFBDA19DBF1F00090E93F /* SlotData.h in Headers */,
+				C0A8687419ED4FEB00835415 /* CustomClass.h in Headers */,
 				ED9C6A9718599AD8000A5232 /* CCNodeGrid.h in Headers */,
 				1A8C59D6180E930E00EF57C3 /* CCDecorativeDisplay.h in Headers */,
 				50ABC0201926664800A911A9 /* CCThread.h in Headers */,
@@ -6349,6 +6368,7 @@
 				46A170EF1807CECA005B8026 /* CCPhysicsWorld.cpp in Sources */,
 				46A170ED1807CECA005B8026 /* CCPhysicsShape.cpp in Sources */,
 				50ABBE991925AB6F00A911A9 /* CCRef.cpp in Sources */,
+				C0A8687119ED4FEB00835415 /* CustomClass.cpp in Sources */,
 				ED9C6A9418599AD8000A5232 /* CCNodeGrid.cpp in Sources */,
 				06CAAACB186AD7F20012A414 /* TriggerMng.cpp in Sources */,
 				CDEAFB7B19DBF1F00090E93F /* AttachmentLoader.cpp in Sources */,
@@ -7112,6 +7132,7 @@
 				1ABA68AF1888D700007D1BB4 /* CCFontCharMap.cpp in Sources */,
 				0634A4DD194B19E400E608AF /* CCNodeReader.cpp in Sources */,
 				50ABBE7A1925AB6F00A911A9 /* CCEventMouse.cpp in Sources */,
+				C0A8687219ED4FEB00835415 /* CustomClass.cpp in Sources */,
 				50ABBD981925AB4100A911A9 /* CCGLProgramStateCache.cpp in Sources */,
 				B6B26344193884D60088FE25 /* CCAnimation3D.cpp in Sources */,
 				B6ACD898193D6693005E0B8A /* CCMeshSkin.cpp in Sources */,
