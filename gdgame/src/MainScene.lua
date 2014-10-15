@@ -24,18 +24,18 @@ function MainScene:init()
     skyRight:setPosition(0,0)
     
     local bg2 = cc.Sprite:create("ui/main_bg_mountain.png")
-    local bg2 = MaskSprite:create("ui/main_bg_mountain.jpg")
+    local bg2 = gd.MaskSprite:create("ui/main_bg_mountain.jpg")
     bg2:setMask("ui/main_bg_mountain_alpha_mask",gd.maskVSH,gd.maskFSH)
     bg2:setScale(self._winSize.height / bg2:getContentSize().height)
     bg2:setAnchorPoint(self._zeroPoint)
     bg2:setPosition(self._zeroPoint)
     
-    local bg3 = MaskSprite:create("ui/main_bg_grass_left.jpg")
+    local bg3 = gd.MaskSprite:create("ui/main_bg_grass_left.jpg")
     bg3:setMask("ui/main_bg_grass_left_alpha_mask",gd.maskVSH,gd.maskFSH)
     bg3:setAnchorPoint(self._zeroPoint)
     bg3:setPosition(self._zeroPoint)
     
-    local bg4 = MaskSprite:create("ui/main_bg_grass_right.jpg")
+    local bg4 = gd.MaskSprite:create("ui/main_bg_grass_right.jpg")
     bg4:setMask("ui/main_bg_grass_right_alpha_mask",gd.maskVSH,gd.maskFSH)
     bg4:setAnchorPoint(self._zeroPoint)
     bg4:setPosition(bg3:getContentSize().width,0)
@@ -50,9 +50,9 @@ function MainScene:init()
     self:addChild(voidNode)
     
     --add menu
---    local item1Sprite = MaskSprite:create("ui/main_menu_todolist_1.jpg")
+--    local item1Sprite = gd.MaskSprite:create("ui/main_menu_todolist_1.jpg")
 --    item1Sprite:setMask("ui/main_menu_todolist_1_alpha_mask",gd.maskVSH,gd.maskFSH)
---    local item1SpriteSelect = MaskSprite:create("ui/main_menu_todolist_2.jpg")
+--    local item1SpriteSelect = gd.MaskSprite:create("ui/main_menu_todolist_2.jpg")
 --    item1SpriteSelect:setMask("ui/main_menu_todolist_2_alpha_mask",gd.maskVSH,gd.maskFSH)
     
     local item1 = cc.MenuItemLabel:create(cc.Label:createWithTTF("duplication","fonts/Marker Felt.ttf",32))
