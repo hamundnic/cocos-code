@@ -1739,6 +1739,10 @@
 		B6B26344193884D60088FE25 /* CCAnimation3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6B26341193884D60088FE25 /* CCAnimation3D.cpp */; };
 		B6B26345193884D60088FE25 /* CCAnimation3D.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B26342193884D60088FE25 /* CCAnimation3D.h */; };
 		B6B26346193884D60088FE25 /* CCAnimation3D.h in Headers */ = {isa = PBXBuildFile; fileRef = B6B26342193884D60088FE25 /* CCAnimation3D.h */; };
+		C0A7906219EE113D00B2CA11 /* MaskSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A7906019EE113D00B2CA11 /* MaskSprite.cpp */; };
+		C0A7906319EE113D00B2CA11 /* MaskSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A7906019EE113D00B2CA11 /* MaskSprite.cpp */; };
+		C0A7906419EE113D00B2CA11 /* MaskSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = C0A7906119EE113D00B2CA11 /* MaskSprite.h */; };
+		C0A7906519EE113D00B2CA11 /* MaskSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = C0A7906119EE113D00B2CA11 /* MaskSprite.h */; };
 		C0A8687119ED4FEB00835415 /* CustomClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A8686F19ED4FEB00835415 /* CustomClass.cpp */; };
 		C0A8687219ED4FEB00835415 /* CustomClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A8686F19ED4FEB00835415 /* CustomClass.cpp */; };
 		C0A8687319ED4FEB00835415 /* CustomClass.h in Headers */ = {isa = PBXBuildFile; fileRef = C0A8687019ED4FEB00835415 /* CustomClass.h */; };
@@ -1869,10 +1873,6 @@
 		CDEAFBDE19DBF1F00090E93F /* spine-cocos2dx.h in Headers */ = {isa = PBXBuildFile; fileRef = CDEAFB6119DBF1F00090E93F /* spine-cocos2dx.h */; };
 		CDEAFBDF19DBF1F00090E93F /* spine.h in Headers */ = {isa = PBXBuildFile; fileRef = CDEAFB6219DBF1F00090E93F /* spine.h */; };
 		CDEAFBE019DBF1F00090E93F /* spine.h in Headers */ = {isa = PBXBuildFile; fileRef = CDEAFB6219DBF1F00090E93F /* spine.h */; };
-		CDF07D8319DE8BC0008587CA /* MaskSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDF07D8119DE8BC0008587CA /* MaskSprite.cpp */; };
-		CDF07D8419DE8BC0008587CA /* MaskSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDF07D8119DE8BC0008587CA /* MaskSprite.cpp */; };
-		CDF07D8519DE8BC0008587CA /* MaskSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = CDF07D8219DE8BC0008587CA /* MaskSprite.h */; };
-		CDF07D8619DE8BC0008587CA /* MaskSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = CDF07D8219DE8BC0008587CA /* MaskSprite.h */; };
 		ED9C6A9418599AD8000A5232 /* CCNodeGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED9C6A9218599AD8000A5232 /* CCNodeGrid.cpp */; };
 		ED9C6A9518599AD8000A5232 /* CCNodeGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED9C6A9218599AD8000A5232 /* CCNodeGrid.cpp */; };
 		ED9C6A9618599AD8000A5232 /* CCNodeGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = ED9C6A9318599AD8000A5232 /* CCNodeGrid.h */; };
@@ -2895,6 +2895,8 @@
 		B6B2633C19381FBF0088FE25 /* CCAnimationCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAnimationCurve.h; sourceTree = "<group>"; };
 		B6B26341193884D60088FE25 /* CCAnimation3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAnimation3D.cpp; sourceTree = "<group>"; };
 		B6B26342193884D60088FE25 /* CCAnimation3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAnimation3D.h; sourceTree = "<group>"; };
+		C0A7906019EE113D00B2CA11 /* MaskSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaskSprite.cpp; sourceTree = "<group>"; };
+		C0A7906119EE113D00B2CA11 /* MaskSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskSprite.h; sourceTree = "<group>"; };
 		C0A8686F19ED4FEB00835415 /* CustomClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CustomClass.cpp; sourceTree = "<group>"; };
 		C0A8687019ED4FEB00835415 /* CustomClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomClass.h; sourceTree = "<group>"; };
 		CDEAFB1A19DBF1F00090E93F /* Android.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Android.mk; sourceTree = "<group>"; };
@@ -2968,8 +2970,6 @@
 		CDEAFB6019DBF1F00090E93F /* spine-cocos2dx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "spine-cocos2dx.cpp"; sourceTree = "<group>"; };
 		CDEAFB6119DBF1F00090E93F /* spine-cocos2dx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "spine-cocos2dx.h"; sourceTree = "<group>"; };
 		CDEAFB6219DBF1F00090E93F /* spine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spine.h; sourceTree = "<group>"; };
-		CDF07D8119DE8BC0008587CA /* MaskSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaskSprite.cpp; sourceTree = "<group>"; };
-		CDF07D8219DE8BC0008587CA /* MaskSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskSprite.h; sourceTree = "<group>"; };
 		ED9C6A9218599AD8000A5232 /* CCNodeGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = CCNodeGrid.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		ED9C6A9318599AD8000A5232 /* CCNodeGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNodeGrid.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3109,7 +3109,6 @@
 				50ABBEDB1926664700A911A9 /* platform */,
 				1551A340158F2AB200E66CFE /* Products */,
 				500DC89819105D41007B91BF /* renderer */,
-				CDF07D8019DE8BC0008587CA /* shader */,
 				1AAF5849180E40B8000584C8 /* storage */,
 				2905F9E618CF08D000240AA3 /* ui */,
 			);
@@ -4987,6 +4986,8 @@
 		C0A8686D19ED4FEB00835415 /* custom */ = {
 			isa = PBXGroup;
 			children = (
+				C0A7906019EE113D00B2CA11 /* MaskSprite.cpp */,
+				C0A7906119EE113D00B2CA11 /* MaskSprite.h */,
 				C0A8686F19ED4FEB00835415 /* CustomClass.cpp */,
 				C0A8687019ED4FEB00835415 /* CustomClass.h */,
 			);
@@ -5088,16 +5089,6 @@
 			path = proj.wp8;
 			sourceTree = "<group>";
 		};
-		CDF07D8019DE8BC0008587CA /* shader */ = {
-			isa = PBXGroup;
-			children = (
-				CDF07D8119DE8BC0008587CA /* MaskSprite.cpp */,
-				CDF07D8219DE8BC0008587CA /* MaskSprite.h */,
-			);
-			name = shader;
-			path = ../cocos/shader;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -5115,7 +5106,6 @@
 				50ABBE8D1925AB6F00A911A9 /* CCNS.h in Headers */,
 				06CAAAC9186AD7EE0012A414 /* TriggerMng.h in Headers */,
 				2905FA6018CF08D100240AA3 /* UILayoutParameter.h in Headers */,
-				CDF07D8519DE8BC0008587CA /* MaskSprite.h in Headers */,
 				50ABBEA51925AB6F00A911A9 /* CCScriptSupport.h in Headers */,
 				B29594D01926D61F003EEF37 /* CCSprite3DMaterial.h in Headers */,
 				1ABA68B01888D700007D1BB4 /* CCFontCharMap.h in Headers */,
@@ -5237,6 +5227,7 @@
 				50ABBE4F1925AB6F00A911A9 /* CCEventCustom.h in Headers */,
 				50ABBD521925AB0000A911A9 /* Quaternion.h in Headers */,
 				1A57022F180BCC1A0088DEC7 /* CCParticleSystemQuad.h in Headers */,
+				C0A7906419EE113D00B2CA11 /* MaskSprite.h in Headers */,
 				2905FA4218CF08D100240AA3 /* CocosGUI.h in Headers */,
 				5034CA49191D591100CE6051 /* ccShader_Label_df.frag in Headers */,
 				1A01C68C18F57BE800EFE3A6 /* CCDeprecated.h in Headers */,
@@ -5739,6 +5730,7 @@
 				1A01C69518F57BE800EFE3A6 /* CCFloat.h in Headers */,
 				1A5701CA180BCB5A0088DEC7 /* CCLabelTextFormatter.h in Headers */,
 				2905FA7B18CF08D100240AA3 /* UISlider.h in Headers */,
+				C0A7906519EE113D00B2CA11 /* MaskSprite.h in Headers */,
 				5034CA22191D591100CE6051 /* ccShader_PositionTextureColorAlphaTest.frag in Headers */,
 				50ABBECE1925AB6F00A911A9 /* s3tc.h in Headers */,
 				50ABBE901925AB6F00A911A9 /* CCPlatformConfig.h in Headers */,
@@ -5893,7 +5885,6 @@
 				50ABBD8E1925AB4100A911A9 /* CCGLProgram.h in Headers */,
 				50FCEB9E18C72017004AD434 /* ImageViewReader.h in Headers */,
 				50ABC0081926664800A911A9 /* CCApplicationProtocol.h in Headers */,
-				CDF07D8619DE8BC0008587CA /* MaskSprite.h in Headers */,
 				1ABA68B11888D700007D1BB4 /* CCFontCharMap.h in Headers */,
 				50ABBD4F1925AB0000A911A9 /* MathUtil.h in Headers */,
 				2905FA4918CF08D100240AA3 /* UIButton.h in Headers */,
@@ -6476,7 +6467,6 @@
 				1A570292180BCCAB0088DEC7 /* CCAnimation.cpp in Sources */,
 				1A570296180BCCAB0088DEC7 /* CCAnimationCache.cpp in Sources */,
 				2905FA8C18CF08D100240AA3 /* UIWidget.cpp in Sources */,
-				CDF07D8319DE8BC0008587CA /* MaskSprite.cpp in Sources */,
 				CDEAFBCF19DBF1F00090E93F /* SkinnedMeshAttachment.cpp in Sources */,
 				2905FA8018CF08D100240AA3 /* UITextAtlas.cpp in Sources */,
 				50ABBE351925AB6F00A911A9 /* CCConsole.cpp in Sources */,
@@ -6546,6 +6536,7 @@
 				CDEAFB9B19DBF1F00090E93F /* IkConstraintData.cpp in Sources */,
 				50ABBDA31925AB4100A911A9 /* CCQuadCommand.cpp in Sources */,
 				2905FA6A18CF08D100240AA3 /* UIPageView.cpp in Sources */,
+				C0A7906219EE113D00B2CA11 /* MaskSprite.cpp in Sources */,
 				B29594C61926D61F003EEF37 /* CCObjLoader.cpp in Sources */,
 				06CAAAC7186AD7E90012A414 /* TriggerObj.cpp in Sources */,
 				1AD71DEF180E26E600808F54 /* CCNode+CCBRelativePositioning.cpp in Sources */,
@@ -6887,7 +6878,6 @@
 				1A57010F180BC8EE0088DEC7 /* CCDrawingPrimitives.cpp in Sources */,
 				1A570113180BC8EE0088DEC7 /* CCDrawNode.cpp in Sources */,
 				1A57011C180BC90D0088DEC7 /* CCGrabber.cpp in Sources */,
-				CDF07D8419DE8BC0008587CA /* MaskSprite.cpp in Sources */,
 				1A570120180BC90D0088DEC7 /* CCGrid.cpp in Sources */,
 				1A57019E180BCB590088DEC7 /* CCFont.cpp in Sources */,
 				503DD8E21926736A00CD74DD /* CCCommon.mm in Sources */,
@@ -7100,6 +7090,7 @@
 				1A8C59C8180E930E00EF57C3 /* CCComRender.cpp in Sources */,
 				1A8C59CC180E930E00EF57C3 /* CCDataReaderHelper.cpp in Sources */,
 				1A8C59D0180E930E00EF57C3 /* CCDatas.cpp in Sources */,
+				C0A7906319EE113D00B2CA11 /* MaskSprite.cpp in Sources */,
 				1A8C59D4180E930E00EF57C3 /* CCDecorativeDisplay.cpp in Sources */,
 				1A8C59D8180E930E00EF57C3 /* CCDisplayFactory.cpp in Sources */,
 				46C02E0818E91123004B7456 /* xxhash.c in Sources */,

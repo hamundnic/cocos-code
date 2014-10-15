@@ -135,7 +135,6 @@ def main():
                     'cocos2dx_experimental_video.ini' : ('cocos2dx_experimental_video', 'lua_cocos2dx_experimental_video_auto'), \
                     'cocos2dx_experimental.ini' : ('cocos2dx_experimental', 'lua_cocos2dx_experimental_auto'), \
                     'cocos2dx_controller.ini' : ('cocos2dx_controller', 'lua_cocos2dx_controller_auto'), \
-                    'cocos2dx_masksprite.ini' : ('cocos2dx_masksprite', 'lua_cocos2dx_masksprite'), \
                     'cocos2dx_custom.ini' : ('cocos2dx_custom', 'lua_cocos2dx_custom_auto'), \
                     }
         target = 'lua'

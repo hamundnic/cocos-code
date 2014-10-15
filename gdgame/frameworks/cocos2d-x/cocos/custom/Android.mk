@@ -6,7 +6,8 @@ LOCAL_MODULE := cocos_custom_static
 LOCAL_MODULE_FILENAME := libcustom
  
 LOCAL_SRC_FILES := \
-CustomClass.cpp
+CustomClass.cpp \
+MaskSprite.cpp
  
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH) \
 $(LOCAL_PATH)./
