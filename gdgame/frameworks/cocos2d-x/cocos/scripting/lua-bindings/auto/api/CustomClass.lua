@@ -2,7 +2,7 @@
 --------------------------------
 -- @module CustomClass
 -- @extend Ref
--- @parent_module gd
+-- @parent_module 
 
 --------------------------------
 -- @function [parent=#CustomClass] init 
@@ -17,7 +17,7 @@
 --------------------------------
 -- @function [parent=#CustomClass] create 
 -- @param self
--- @return CustomClass#CustomClass ret (return value: gd.CustomClass)
+-- @return CustomClass#CustomClass ret (return value: ct.CustomClass)
         
 --------------------------------
 -- @function [parent=#CustomClass] CustomClass 

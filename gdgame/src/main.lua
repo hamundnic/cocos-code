@@ -34,6 +34,9 @@ local function main()
         director:setOpenGLView(glView)
     end
     
+--    gd.MaskSprite:create():test
+--    gd.MaskSprite:create():tes
+    
     --turn on display FPS
     director:setDisplayStats(true)
     director:setAnimationInterval(1.0 / 30)

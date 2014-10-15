@@ -1,5 +1,6 @@
 require "Cocos2d"
 gd = gd or {}
+gd["name"] = "aaa"
 
 function gd.load()
     gd.loadLayer = cc.Layer:create()

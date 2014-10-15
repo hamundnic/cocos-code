@@ -30,6 +30,10 @@ function MainScene:init()
     bg2:setAnchorPoint(self._zeroPoint)
     bg2:setPosition(self._zeroPoint)
     
+    
+--    MaskSprite:create():testBindingIsOK()
+--    gd.CustomClass:create():helloMsg()
+    
     local bg3 = gd.MaskSprite:create("ui/main_bg_grass_left.jpg")
     bg3:setMask("ui/main_bg_grass_left_alpha_mask",gd.maskVSH,gd.maskFSH)
     bg3:setAnchorPoint(self._zeroPoint)

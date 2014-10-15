@@ -34,7 +34,6 @@ local function main()
     local msg = customClass:helloMsg()
     cclog("customClass's msg is : " .. msg)
     
-    
         
     if cc.Director:getInstance():getRunningScene() then
         cc.Director:getInstance():replaceScene(gameScene)
