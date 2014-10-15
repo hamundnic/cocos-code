@@ -6,7 +6,8 @@
 
 #include "cocos2d.h"
 
-namespace cocos2d {
+namespace custom {
+
 class CustomClass : public cocos2d::Ref
 {
 public:

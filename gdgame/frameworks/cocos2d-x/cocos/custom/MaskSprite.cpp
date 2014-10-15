@@ -33,6 +33,9 @@
 //
 #include "MaskSprite.h"
 
+USING_NS_CC;
+using namespace custom;
+
 void MaskSprite::setMask(const std::string &maskFile,const std::string& vShaderFilename, const std::string& fShaderFilename)
 {
 	auto glProgram = GLProgram::createWithFilenames(vShaderFilename, fShaderFilename);

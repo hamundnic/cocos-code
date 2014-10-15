@@ -9,7 +9,7 @@
 int lua_cocos2dx_custom_CustomClass_init(lua_State* tolua_S)
 {
     int argc = 0;
-    cocos2d::CustomClass* cobj = nullptr;
+    custom::CustomClass* cobj = nullptr;
     bool ok  = true;
 
 #if COCOS2D_DEBUG >= 1
@@ -18,10 +18,10 @@ int lua_cocos2dx_custom_CustomClass_init(lua_State* tolua_S)
 
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.CustomClass",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"gd.CustomClass",0,&tolua_err)) goto tolua_lerror;
 #endif
 
-    cobj = (cocos2d::CustomClass*)tolua_tousertype(tolua_S,1,0);
+    cobj = (custom::CustomClass*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
@@ -53,7 +53,7 @@ int lua_cocos2dx_custom_CustomClass_init(lua_State* tolua_S)
 int lua_cocos2dx_custom_CustomClass_helloMsg(lua_State* tolua_S)
 {
     int argc = 0;
-    cocos2d::CustomClass* cobj = nullptr;
+    custom::CustomClass* cobj = nullptr;
     bool ok  = true;
 
 #if COCOS2D_DEBUG >= 1
@@ -62,10 +62,10 @@ int lua_cocos2dx_custom_CustomClass_helloMsg(lua_State* tolua_S)
 
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.CustomClass",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"gd.CustomClass",0,&tolua_err)) goto tolua_lerror;
 #endif
 
-    cobj = (cocos2d::CustomClass*)tolua_tousertype(tolua_S,1,0);
+    cobj = (custom::CustomClass*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
@@ -104,7 +104,7 @@ int lua_cocos2dx_custom_CustomClass_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"cc.CustomClass",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"gd.CustomClass",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -113,8 +113,8 @@ int lua_cocos2dx_custom_CustomClass_create(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::CustomClass* ret = cocos2d::CustomClass::create();
-        object_to_luaval<cocos2d::CustomClass>(tolua_S, "cc.CustomClass",(cocos2d::CustomClass*)ret);
+        custom::CustomClass* ret = custom::CustomClass::create();
+        object_to_luaval<custom::CustomClass>(tolua_S, "gd.CustomClass",(custom::CustomClass*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -128,7 +128,7 @@ int lua_cocos2dx_custom_CustomClass_create(lua_State* tolua_S)
 int lua_cocos2dx_custom_CustomClass_constructor(lua_State* tolua_S)
 {
     int argc = 0;
-    cocos2d::CustomClass* cobj = nullptr;
+    custom::CustomClass* cobj = nullptr;
     bool ok  = true;
 
 #if COCOS2D_DEBUG >= 1
@@ -142,11 +142,11 @@ int lua_cocos2dx_custom_CustomClass_constructor(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cobj = new cocos2d::CustomClass();
+        cobj = new custom::CustomClass();
         cobj->autorelease();
         int ID =  (int)cobj->_ID ;
         int* luaID =  &cobj->_luaID ;
-        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.CustomClass");
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"gd.CustomClass");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "CustomClass",argc, 0);
@@ -167,8 +167,8 @@ static int lua_cocos2dx_custom_CustomClass_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_custom_CustomClass(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"cc.CustomClass");
-    tolua_cclass(tolua_S,"CustomClass","cc.CustomClass","cc.Ref",nullptr);
+    tolua_usertype(tolua_S,"gd.CustomClass");
+    tolua_cclass(tolua_S,"CustomClass","gd.CustomClass","cc.Ref",nullptr);
 
     tolua_beginmodule(tolua_S,"CustomClass");
         tolua_function(tolua_S,"new",lua_cocos2dx_custom_CustomClass_constructor);
@@ -176,16 +176,16 @@ int lua_register_cocos2dx_custom_CustomClass(lua_State* tolua_S)
         tolua_function(tolua_S,"helloMsg",lua_cocos2dx_custom_CustomClass_helloMsg);
         tolua_function(tolua_S,"create", lua_cocos2dx_custom_CustomClass_create);
     tolua_endmodule(tolua_S);
-    std::string typeName = typeid(cocos2d::CustomClass).name();
-    g_luaType[typeName] = "cc.CustomClass";
-    g_typeCast["CustomClass"] = "cc.CustomClass";
+    std::string typeName = typeid(custom::CustomClass).name();
+    g_luaType[typeName] = "gd.CustomClass";
+    g_typeCast["CustomClass"] = "gd.CustomClass";
     return 1;
 }
 
 int lua_cocos2dx_custom_MaskSprite_setMask(lua_State* tolua_S)
 {
     int argc = 0;
-    MaskSprite* cobj = nullptr;
+    custom::MaskSprite* cobj = nullptr;
     bool ok  = true;
 
 #if COCOS2D_DEBUG >= 1
@@ -194,10 +194,10 @@ int lua_cocos2dx_custom_MaskSprite_setMask(lua_State* tolua_S)
 
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"MaskSprite",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"gd.MaskSprite",0,&tolua_err)) goto tolua_lerror;
 #endif
 
-    cobj = (MaskSprite*)tolua_tousertype(tolua_S,1,0);
+    cobj = (custom::MaskSprite*)tolua_tousertype(tolua_S,1,0);
 
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
@@ -243,7 +243,7 @@ int lua_cocos2dx_custom_MaskSprite_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"MaskSprite",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"gd.MaskSprite",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S)-1;
@@ -255,8 +255,8 @@ int lua_cocos2dx_custom_MaskSprite_create(lua_State* tolua_S)
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
             if (!ok) { break; }
-            MaskSprite* ret = MaskSprite::create(arg0);
-            object_to_luaval<MaskSprite>(tolua_S, "MaskSprite",(MaskSprite*)ret);
+            custom::MaskSprite* ret = custom::MaskSprite::create(arg0);
+            object_to_luaval<custom::MaskSprite>(tolua_S, "gd.MaskSprite",(custom::MaskSprite*)ret);
             return 1;
         }
     } while (0);
@@ -265,8 +265,8 @@ int lua_cocos2dx_custom_MaskSprite_create(lua_State* tolua_S)
     {
         if (argc == 0)
         {
-            MaskSprite* ret = MaskSprite::create();
-            object_to_luaval<MaskSprite>(tolua_S, "MaskSprite",(MaskSprite*)ret);
+            custom::MaskSprite* ret = custom::MaskSprite::create();
+            object_to_luaval<custom::MaskSprite>(tolua_S, "gd.MaskSprite",(custom::MaskSprite*)ret);
             return 1;
         }
     } while (0);
@@ -289,7 +289,7 @@ int lua_cocos2dx_custom_MaskSprite_testBindingIsOK(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"MaskSprite",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"gd.MaskSprite",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -298,7 +298,7 @@ int lua_cocos2dx_custom_MaskSprite_testBindingIsOK(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        MaskSprite::testBindingIsOK();
+        custom::MaskSprite::testBindingIsOK();
         return 0;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "testBindingIsOK",argc, 0);
@@ -317,25 +317,25 @@ static int lua_cocos2dx_custom_MaskSprite_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_custom_MaskSprite(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"MaskSprite");
-    tolua_cclass(tolua_S,"MaskSprite","MaskSprite","cc.Sprite",nullptr);
+    tolua_usertype(tolua_S,"gd.MaskSprite");
+    tolua_cclass(tolua_S,"MaskSprite","gd.MaskSprite","cc.Sprite",nullptr);
 
     tolua_beginmodule(tolua_S,"MaskSprite");
         tolua_function(tolua_S,"setMask",lua_cocos2dx_custom_MaskSprite_setMask);
         tolua_function(tolua_S,"create", lua_cocos2dx_custom_MaskSprite_create);
         tolua_function(tolua_S,"testBindingIsOK", lua_cocos2dx_custom_MaskSprite_testBindingIsOK);
     tolua_endmodule(tolua_S);
-    std::string typeName = typeid(MaskSprite).name();
-    g_luaType[typeName] = "MaskSprite";
-    g_typeCast["MaskSprite"] = "MaskSprite";
+    std::string typeName = typeid(custom::MaskSprite).name();
+    g_luaType[typeName] = "gd.MaskSprite";
+    g_typeCast["MaskSprite"] = "gd.MaskSprite";
     return 1;
 }
 TOLUA_API int register_all_cocos2dx_custom(lua_State* tolua_S)
 {
 	tolua_open(tolua_S);
 	
-	tolua_module(tolua_S,nullptr,0);
-	tolua_beginmodule(tolua_S,nullptr);
+	tolua_module(tolua_S,"gd",0);
+	tolua_beginmodule(tolua_S,"gd");
 
 	lua_register_cocos2dx_custom_CustomClass(tolua_S);
 	lua_register_cocos2dx_custom_MaskSprite(tolua_S);

@@ -36,9 +36,9 @@
 
 #include "cocos2d.h"
 
-USING_NS_CC;
+namespace custom {
 
-class MaskSprite:public Sprite
+class MaskSprite : public cocos2d::Sprite
 {
 public:
 	CREATE_FUNC(MaskSprite);
@@ -47,4 +47,5 @@ public:
 	static void testBindingIsOK();
 };
 
+} //namespace cocos2d
 #endif /* defined(__gdgame__MaskSprite__) */

@@ -2,6 +2,7 @@
 #include "CustomClass.h"
 
 USING_NS_CC;
+using namespace custom;
 
 CustomClass::CustomClass(){
 

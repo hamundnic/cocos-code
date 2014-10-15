@@ -2,7 +2,7 @@
 --------------------------------
 -- @module MaskSprite
 -- @extend Sprite
--- @parent_module 
+-- @parent_module gd
 
 --------------------------------
 -- @function [parent=#MaskSprite] setMask 
@@ -17,7 +17,7 @@
 -- @function [parent=#MaskSprite] create
 -- @param self
 -- @param #char char
--- @return MaskSprite#MaskSprite ret (retunr value: MaskSprite)
+-- @return MaskSprite#MaskSprite ret (retunr value: gd.MaskSprite)
 
 --------------------------------
 -- @function [parent=#MaskSprite] testBindingIsOK 
