@@ -334,8 +334,8 @@ TOLUA_API int register_all_cocos2dx_custom(lua_State* tolua_S)
 {
 	tolua_open(tolua_S);
 	
-	tolua_module(tolua_S,nullptr,0);
-	tolua_beginmodule(tolua_S,nullptr);
+	tolua_module(tolua_S,"ct",0);
+	tolua_beginmodule(tolua_S,"ct");
 
 	lua_register_cocos2dx_custom_CustomClass(tolua_S);
 	lua_register_cocos2dx_custom_MaskSprite(tolua_S);

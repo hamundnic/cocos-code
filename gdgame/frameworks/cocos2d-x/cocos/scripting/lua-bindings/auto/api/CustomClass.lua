@@ -2,7 +2,7 @@
 --------------------------------
 -- @module CustomClass
 -- @extend Ref
--- @parent_module 
+-- @parent_module ct
 
 --------------------------------
 -- @function [parent=#CustomClass] init 

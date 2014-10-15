@@ -2,7 +2,7 @@
 --------------------------------
 -- @module MaskSprite
 -- @extend Sprite
--- @parent_module 
+-- @parent_module ct
 
 --------------------------------
 -- @function [parent=#MaskSprite] setMask 
